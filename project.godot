@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="GMTKGameJam2023"
+run/main_scene="res://node_3d.tscn"
 config/features=PackedStringArray("4.1", "C#", "Forward Plus")
-run/main_scene="res://demo.tscn"
 config/icon="res://icon.svg"
 
 [dotnet]

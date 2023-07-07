@@ -1,9 +1,9 @@
 using Godot;
 using System;
-using units.cs;
+
 public partial class CharacterBody3D : Godot.CharacterBody3D
 {
-	public const float Speed = 5.0f*units.cs.;
+	public const float Speed = 5.0f;
 	public const float JumpVelocity = 4.5f;
 
 	// Get the gravity from the project settings to be synced with RigidBody nodes.

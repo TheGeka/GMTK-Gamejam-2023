@@ -1,11 +1,19 @@
 using Godot;
-using System;
 
-public partial class PathTest : CharacterBody3D
+namespace GMTKGameJam2023;
+
+public partial class Units : Godot.CharacterBody3D
 {
+    private int hp;
+    private int carryweight;
+    private int reach;
+    protected virtual float MovementSpeed { get; set; }
+
+    // Get the gravity from the project settings to be synced with RigidBody nodes.
+    public float gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
+
     private NavigationAgent3D _navigationAgent;
 
-    private float _movementSpeed = 3.0f;
     private Vector3 _movementTargetPosition = new(-3.0f, 0.0f, 2.0f);
 
     public Vector3 MovementTarget
@@ -40,7 +48,7 @@ public partial class PathTest : CharacterBody3D
         var nextPathPosition = _navigationAgent.GetNextPathPosition();
 
         var newVelocity = (nextPathPosition - currentAgentPosition).Normalized();
-        newVelocity *= _movementSpeed;
+        newVelocity *= MovementSpeed;
 
         Velocity = newVelocity;
 

@@ -73,8 +73,14 @@ public partial class Game : Node3D
 	}
 	private void SpawnGrunt(Vector3 Location)
 	{
-		var newgrunt = _gruntscene.Instantiate<Grunt>();
-		newgrunt.Position = Location;
-		ChildContainer.AddChild(newgrunt);
+		for (int i = 0; i < 5; i++)
+		{
+			var newLoc = Location;
+			newLoc.X = newLoc.X + 2 + i;
+			var newgrunt = _gruntscene.Instantiate<Grunt>();
+			newgrunt.Name = "Grunt";
+			newgrunt.Position = newLoc;
+			AddChild(newgrunt);
+		}
 	}
 }

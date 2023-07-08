@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://l64d1e0yu0a5"]
+
+[ext_resource type="Script" path="res://grunt.cs" id="1_wgduj"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g2g8v"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_5emsq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pr6sg"]
+size = Vector3(100, 1, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2cw2k"]
+albedo_color = Color(0.0901961, 0.223529, 0.121569, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_k6qrb"]
+size = Vector3(100, 1, 100)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_7a7j4"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+script = ExtResource("1_wgduj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("CapsuleShape3D_g2g8v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+mesh = SubResource("CapsuleMesh_5emsq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1e+06, 0, 0, 0, 0, 0, 0, 0, 1e+06, 0, 0, 0)
+shape = SubResource("BoxShape3D_pr6sg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1e+10, 0, 0, 0, 0, 0, 0, 0, 1e+10, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_2cw2k")
+custom_aabb = AABB(0, 100, 0, 0, 0, 0)
+mesh = SubResource("BoxMesh_k6qrb")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_7a7j4")

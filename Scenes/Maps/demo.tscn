@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://decgpdjyieqy0"]
+[gd_scene load_steps=12 format=3 uid="uid://decgpdjyieqy0"]
 
 [ext_resource type="Script" path="res://Scripts/Game.cs" id="1_mgfwb"]
+[ext_resource type="Script" path="res://Scripts/CameraControl.cs" id="2_6ga8y"]
 [ext_resource type="PackedScene" uid="uid://kg84jashl7fa" path="res://Units/Grunt/grunt.tscn" id="2_fkyrw"]
 [ext_resource type="PackedScene" uid="uid://entuos75eb64" path="res://Menus/PauseMenu.tscn" id="3_2v80t"]
 [ext_resource type="PackedScene" uid="uid://d2ed2wi11yadi" path="res://Units/Survivor/survivor.tscn" id="3_tyavk"]
@@ -53,8 +54,10 @@ mesh = SubResource("BoxMesh_pb6gx")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 process_mode = 3
-transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 37, 22)
+transform = Transform3D(1, 0, 0, 0, 0.173648, 0.984808, 0, -0.984808, 0.173648, 0, 20, 40)
 fov = 100.0
+size = 30.0
+script = ExtResource("2_6ga8y")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 process_mode = 3

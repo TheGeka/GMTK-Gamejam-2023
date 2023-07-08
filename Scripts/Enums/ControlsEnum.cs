@@ -2,6 +2,12 @@ namespace GMTKGameJam2023.Scripts.Enums
 {
     public enum Controls
     {
-        PauseGame
+        PauseGame,
+        Up,
+        Down,
+        Left,
+        Right,
+        ZoomIn,
+        ZoomOut
     }
 }

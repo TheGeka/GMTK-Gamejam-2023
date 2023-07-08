@@ -46,7 +46,7 @@ public partial class Game : Node3D
 	{
 		base._Input(@event);
 		var control = GetNode<Control>("PauseMenu");
-		if (@event.IsPauseEvent() && !GetTree().Paused && _turnAvailable)
+		if (@event.IsControl(Controls.PauseGame) && !GetTree().Paused && _turnAvailable)
 		{
 			_turnAvailable = false;
 			ChildContainer.GetTree().Paused = true;

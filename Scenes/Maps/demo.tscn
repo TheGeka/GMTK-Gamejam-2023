@@ -48,7 +48,7 @@ skeleton = NodePath("../..")
 shape = SubResource("BoxShape3D_8g2ib")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Wall"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02607, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02607, 44.5493)
 mesh = SubResource("BoxMesh_pb6gx")
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -58,7 +58,10 @@ fov = 100.0
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 process_mode = 3
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13, 26)
+light_energy = 10.292
+light_indirect_energy = 1.275
+omni_range = 264.404
 
 [node name="PauseMenu" parent="." instance=ExtResource("3_2v80t")]
 process_mode = 3
@@ -67,7 +70,7 @@ visible = false
 [node name="UnitContainer" type="Node" parent="."]
 process_mode = 1
 
-[node name="Survivor" parent="UnitContainer" instance=ExtResource("3_tyavk")]
+[node name="Survivor" parent="UnitContainer" groups=["Protagonists"] instance=ExtResource("3_tyavk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 24)
 
 [node name="Grunt" parent="UnitContainer" instance=ExtResource("2_fkyrw")]

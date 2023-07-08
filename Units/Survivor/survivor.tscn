@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Units/Survivor/Survivor.cs" id="1_62lkq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k6v14"]
+radius = 0.75
 height = 1.9
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k3vmn"]

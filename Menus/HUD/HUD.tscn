@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://c3m540qsh6dve"]
+[gd_scene load_steps=3 format=3 uid="uid://c3m540qsh6dve"]
 
 [ext_resource type="Script" path="res://Menus/HUD/HUD.cs" id="1_u8ump"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6wgy3"]
+font_size = 40
 
 [node name="CanvasLayer" type="CanvasLayer"]
 follow_viewport_enabled = true
@@ -13,4 +16,5 @@ anchor_right = 1.0
 offset_left = -40.0
 offset_bottom = 23.0
 grow_horizontal = 0
-text = "Resources: "
+text = "Resources: 0"
+label_settings = SubResource("LabelSettings_6wgy3")

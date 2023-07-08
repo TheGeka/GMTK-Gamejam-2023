@@ -9,7 +9,7 @@ using Timer = System.Timers.Timer;
 
 public partial class Game : Node3D
 {
-	[Export(hintString: "Interval to get resources in seconds")] private static float _resourceInterval = 10;
+	[Export] private static float _resourceInterval = 5;
 	
 	internal readonly Timer TurnTimer = new Timer()
 	{

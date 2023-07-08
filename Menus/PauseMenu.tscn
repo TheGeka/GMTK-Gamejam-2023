@@ -6,26 +6,26 @@
 follow_viewport_enabled = true
 script = ExtResource("1_ohuie")
 
-[node name="FlowContainer" type="FlowContainer" parent="."]
-anchors_preset = 7
-anchor_left = 0.5
+[node name="ButtonContainer" type="HBoxContainer" parent="."]
+anchors_preset = 12
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -575.0
-offset_top = -54.0
-offset_right = 572.0
+offset_top = -70.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Grunt" type="Button" parent="FlowContainer"]
+[node name="Grunt" type="Button" parent="ButtonContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Grunt"
 
-[node name="Unit2" type="Button" parent="FlowContainer"]
+[node name="Unit2" type="Button" parent="ButtonContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Unit2"
 
-[node name="Unpause" type="Button" parent="FlowContainer"]
+[node name="Unpause" type="Button" parent="ButtonContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Unpause"

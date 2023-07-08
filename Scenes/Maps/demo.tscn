@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://decgpdjyieqy0"]
+[gd_scene load_steps=12 format=3 uid="uid://decgpdjyieqy0"]
 
 [ext_resource type="Script" path="res://Scripts/SpawnGrunt.cs" id="1_eou16"]
 [ext_resource type="PackedScene" uid="uid://kg84jashl7fa" path="res://Units/Grunt/grunt.tscn" id="2_fkyrw"]
+[ext_resource type="PackedScene" uid="uid://cq1n72ki7bsx3" path="res://Units/Grunt/shape_cast_3d.tscn" id="3_ecgw5"]
 [ext_resource type="PackedScene" uid="uid://d2ed2wi11yadi" path="res://Units/Survivor/survivor.tscn" id="3_tyavk"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_vh0oj"]
@@ -22,6 +23,9 @@ size = Vector3(5, 2, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_pb6gx"]
 size = Vector3(5, 2, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_bbvau"]
+radius = 10.0
 
 [node name="Demo" type="Node3D"]
 script = ExtResource("1_eou16")
@@ -57,4 +61,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13, 0)
 
 [node name="Grunt" parent="." instance=ExtResource("2_fkyrw")]
 
+[node name="ShapeCast3D" parent="Grunt" instance=ExtResource("3_ecgw5")]
+max_results = 2
+
 [node name="Survivor" parent="." instance=ExtResource("3_tyavk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 20.827)
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="Survivor"]
+shape = SubResource("SphereShape3D_bbvau")

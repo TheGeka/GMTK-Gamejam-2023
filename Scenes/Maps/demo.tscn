@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/SpawnGrunt.cs" id="1_eou16"]
 [ext_resource type="PackedScene" uid="uid://kg84jashl7fa" path="res://Units/Grunt/grunt.tscn" id="2_fkyrw"]
-[ext_resource type="PackedScene" uid="uid://cq1n72ki7bsx3" path="res://Units/Grunt/shape_cast_3d.tscn" id="3_ecgw5"]
+[ext_resource type="PackedScene" uid="uid://bb2qa8duwsgme" path="res://Units/Grunt/shape_cast_3d.tscn" id="3_ecgw5"]
 [ext_resource type="PackedScene" uid="uid://d2ed2wi11yadi" path="res://Units/Survivor/survivor.tscn" id="3_tyavk"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_vh0oj"]

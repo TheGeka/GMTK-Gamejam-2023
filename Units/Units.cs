@@ -28,6 +28,11 @@ public partial class Units : CharacterBody3D
     {
         base._Ready();
 
+        var cs = GetNode<Area3D>("Area3D");
+        cs.BodyEntered += body =>
+        {
+            GD.Print("Collision");
+        };
         _navigationAgent = GetNode<NavigationAgent3D>("NavigationAgent3D");
 
         // These values need to be adjusted for the actor's speed

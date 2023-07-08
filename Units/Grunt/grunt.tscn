@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Units/Grunt/Grunt.cs" id="1_wbryl"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n7087"]
+radius = 0.786945
 height = 1.67768
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f5w51"]
@@ -11,14 +12,21 @@ albedo_color = Color(0, 0.466667, 0, 1)
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_nvg03"]
 
 [node name="Grunt" type="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 22)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("1_wbryl")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.789221, 0)
 shape = SubResource("CapsuleShape3D_n7087")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 material_override = SubResource("StandardMaterial3D_f5w51")
 mesh = SubResource("CapsuleMesh_nvg03")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.912452, 0)
+shape = SubResource("CapsuleShape3D_n7087")

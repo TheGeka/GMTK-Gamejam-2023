@@ -11,7 +11,7 @@ polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 5), PackedInt32Arr
 size = Vector3(100, 0, 100)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_shavf"]
-albedo_color = Color(0, 1, 0.278431, 1)
+albedo_color = Color(0.262745, 0.262745, 0.262745, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_s15wq"]
 size = Vector2(100, 100)

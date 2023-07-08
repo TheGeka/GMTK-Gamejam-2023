@@ -3,17 +3,16 @@ using System;
 
 public partial class PathTest : CharacterBody3D
 {
-	private NavigationAgent3D _navigationAgent;
+	NavigationAgent3D _navigationAgent;
 
 	private float _movementSpeed = 3.0f;
-	private Vector3 _movementTargetPosition = new(-3.0f, 0.0f, 2.0f);
+	private Vector3 _movementTargetPosition = new Vector3(-3.0f, 0.0f, 2.0f);
 
 	public Vector3 MovementTarget
 	{
-		get => _navigationAgent.TargetPosition;
-		set => _navigationAgent.TargetPosition = value;
+		get { return _navigationAgent.TargetPosition; }
+		set { _navigationAgent.TargetPosition = value; }
 	}
-
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -29,24 +28,26 @@ public partial class PathTest : CharacterBody3D
 		// Make sure to not await during _Ready.
 		Callable.From(ActorSetup).CallDeferred();
 	}
-
+	
 	public override void _PhysicsProcess(double delta)
 	{
 		base._PhysicsProcess(delta);
 
-		if (_navigationAgent.IsNavigationFinished()) return;
+		if (_navigationAgent.IsNavigationFinished())
+		{
+			return;
+		}
 
-		var currentAgentPosition = GlobalTransform.Origin;
-		var nextPathPosition = _navigationAgent.GetNextPathPosition();
+		Vector3 currentAgentPosition = GlobalTransform.Origin;
+		Vector3 nextPathPosition = _navigationAgent.GetNextPathPosition();
 
-		var newVelocity = (nextPathPosition - currentAgentPosition).Normalized();
+		Vector3 newVelocity = (nextPathPosition - currentAgentPosition).Normalized();
 		newVelocity *= _movementSpeed;
 
 		Velocity = newVelocity;
 
 		MoveAndSlide();
 	}
-
 	private async void ActorSetup()
 	{
 		// Wait for the first physics frame so the NavigationServer can sync.
@@ -55,7 +56,6 @@ public partial class PathTest : CharacterBody3D
 		// Now that the navigation map is no longer empty, set the movement target.
 		MovementTarget = _movementTargetPosition;
 	}
-
 	public override void _Input(InputEvent @event)
 	{
 		base._Input(@event);
@@ -71,11 +71,11 @@ public partial class PathTest : CharacterBody3D
 				To = rayEnd
 			});
 
-			if (intersection != null)
+			if ( intersection != null)
 			{
 				var pos = intersection["position"].AsVector3();
 				GD.Print($"Clicked on: X: {pos.X}, Y: {pos.Y}, Z: {pos.Z} ");
-
+				
 				MovementTarget = pos;
 			}
 			//MovementTarget = new Vector3(mouseButtonEvent.Position.X, 0, mouseButtonEvent.Position.Y);

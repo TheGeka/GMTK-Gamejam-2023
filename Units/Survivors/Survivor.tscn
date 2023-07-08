@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4ycpnrivu4fh"]
+
+[ext_resource type="Script" path="res://Survivor.cs" id="1_168cq"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_60vsn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jcpxq"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_00tua"]
+
+[node name="BasicSurvivor" type="CharacterBody3D"]
+script = ExtResource("1_168cq")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_60vsn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.46328, 1.47797, 11.6587)
+material_override = SubResource("StandardMaterial3D_jcpxq")
+mesh = SubResource("CapsuleMesh_00tua")

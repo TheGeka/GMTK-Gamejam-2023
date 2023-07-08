@@ -1,22 +1,28 @@
 using GMTKGameJam2023.Scripts;
+using GMTKGameJam2023.Scripts.Enums;
 using Godot;
 
 namespace GMTKGameJam2023
 {
 	public partial class PauseMenu : Control
 	{
+		private Game _gameManager;
 		// Called when the node enters the scene tree for the first time.
 		public override void _Ready()
 		{
 			var selectGrunt = GetNode<Button>("Grunt");
+			_gameManager = GetNode<Game>("/root/Demo");
 			selectGrunt.Pressed += () =>
 			{
 				GD.Print("Grunt Selected");
+				_gameManager._SelectedUnit = SelectableUnits.Grunt;
+
 			};
 			var SelectUnit2 = GetNode<Button>("Unit2");
 			SelectUnit2.Pressed += () =>
 			{
 				GD.Print("Unit2 Selected");
+				_gameManager._SelectedUnit = SelectableUnits.Unit2;
 			};
 			var unpause = GetNode<Button>("Unpause");
 			unpause.Pressed += OnPauseButtonPressed;
@@ -25,8 +31,8 @@ namespace GMTKGameJam2023
 		private void OnPauseButtonPressed()
 		{
 			Hide();
-			var game = GetNode<Game>("/root/Demo");
-			game._turnTimer.Start();
+			
+			_gameManager.TurnTimer.Start();
 			GetTree().Paused = false;
 			
 		}

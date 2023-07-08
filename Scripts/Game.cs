@@ -3,32 +3,34 @@ using System;
 using System.Timers;
 using GMTKGameJam2023;
 using GMTKGameJam2023.Scripts;
+using GMTKGameJam2023.Scripts.Enums;
+using GMTKGameJam2023.Units;
 using Timer = System.Timers.Timer;
 
 public partial class Game : Node3D
 {
-	internal Timer _turnTimer = new Timer()
+	internal readonly Timer TurnTimer = new Timer()
 	{
 		Interval = TimeSpan.FromSeconds(5).TotalMilliseconds,
 		Enabled = true,
 		AutoReset = false
 	};
 
-	internal bool TurnAvailable = true;
+	private bool _turnAvailable = true;
+
+	internal SelectableUnits _SelectedUnit;
 	
-	private enum Controls
-	{
-		PauseGame
-	}
+	
+	
 	
 	private PackedScene _gruntscene;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		_gruntscene = GD.Load<PackedScene>("res://Units/Grunt/grunt.tscn");
-		_turnTimer.Elapsed += (sender, args) =>
+		TurnTimer.Elapsed += (sender, args) =>
 		{
-			TurnAvailable = true;
+			_turnAvailable = true;
 			GD.Print("Timer elapsed");
 		};
 		
@@ -43,9 +45,9 @@ public partial class Game : Node3D
 	{
 		base._Input(@event);
 		var control = GetNode<Control>("PauseMenu");
-		if (@event.IsPauseEvent() && !GetTree().Paused && TurnAvailable)
+		if (@event.IsPauseEvent() && !GetTree().Paused && _turnAvailable)
 		{
-			TurnAvailable = false;
+			_turnAvailable = false;
 			GetTree().Paused = true;
 			control.Show();
 			
@@ -56,10 +58,19 @@ public partial class Game : Node3D
 			{
 				var camera = GetTree().Root.GetCamera3D();
 				var intersection = camera.CastRay(GetWorld3D().DirectSpaceState, mouseButtonEvent.Position);
-				PlaceGrunt(intersection["position"].AsVector3());
+				switch (_SelectedUnit)
+				{
+					case SelectableUnits.Grunt:
+						SpawnGrunt(intersection["position"].AsVector3());
+						break;
+					case SelectableUnits.Unit2:
+						break;
+					default:
+						throw new ArgumentOutOfRangeException();
+				}
 			}
 	}
-	private void PlaceGrunt(Vector3 Location)
+	private void SpawnGrunt(Vector3 Location)
 	{
 		var newgrunt = _gruntscene.Instantiate<Grunt>();
 		newgrunt.Position = Location;

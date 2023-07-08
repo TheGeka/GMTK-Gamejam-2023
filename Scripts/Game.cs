@@ -9,11 +9,20 @@ using Timer = System.Timers.Timer;
 
 public partial class Game : Node3D
 {
+	[Export(hintString: "Interval to get resources in seconds")] private static float _resourceInterval = 10;
+	
 	internal readonly Timer TurnTimer = new Timer()
 	{
 		Interval = TimeSpan.FromSeconds(5).TotalMilliseconds,
-		Enabled = true,
+		Enabled = false,
 		AutoReset = false
+	};
+
+	internal readonly Timer ResourceTimer = new()
+	{
+		Interval = TimeSpan.FromSeconds(_resourceInterval).TotalMilliseconds,
+		Enabled = true,
+		AutoReset = true
 	};
 
 	private int Resource
@@ -22,7 +31,7 @@ public partial class Game : Node3D
 		set
 		{
 			_resource = value;
-			_hud.UpdateResources(value);
+			_hud.CallDeferred("UpdateResources", value);
 		}
 	}
 
@@ -49,6 +58,7 @@ public partial class Game : Node3D
 			_turnAvailable = true;
 			GD.Print("Timer elapsed");
 		};
+		ResourceTimer.Elapsed += (sender, args) => Resource += 100;
 
 		Resource = 100;
 
@@ -79,8 +89,12 @@ public partial class Game : Node3D
 				switch (_SelectedUnit)
 				{
 					case SelectableUnits.Grunt:
+						if (Resource >= Grunt.Cost)
+						{
+							Resource -= Grunt.Cost;
+							SpawnGrunt(intersection["position"].AsVector3());
+						}
 						
-						SpawnGrunt(intersection["position"].AsVector3());
 						break;
 					case SelectableUnits.Unit2:
 						break;

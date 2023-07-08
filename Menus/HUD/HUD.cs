@@ -17,6 +17,7 @@ public partial class HUD : CanvasLayer
 
 	public void UpdateResources(int resource)
 	{
+		
 		ResourceLabel.Text = $"{resource} Resource";
 	}
 }

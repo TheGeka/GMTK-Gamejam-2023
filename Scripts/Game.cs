@@ -1,10 +1,21 @@
 using Godot;
 using System;
+using System.Timers;
 using GMTKGameJam2023;
 using GMTKGameJam2023.Scripts;
+using Timer = System.Timers.Timer;
 
 public partial class Game : Node3D
 {
+	internal Timer _turnTimer = new Timer()
+	{
+		Interval = TimeSpan.FromSeconds(5).TotalMilliseconds,
+		Enabled = true,
+		AutoReset = false
+	};
+
+	internal bool TurnAvailable = true;
+	
 	private enum Controls
 	{
 		PauseGame
@@ -15,6 +26,12 @@ public partial class Game : Node3D
 	public override void _Ready()
 	{
 		_gruntscene = GD.Load<PackedScene>("res://Units/Grunt/grunt.tscn");
+		_turnTimer.Elapsed += (sender, args) =>
+		{
+			TurnAvailable = true;
+			GD.Print("Timer elapsed");
+		};
+		
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -25,10 +42,12 @@ public partial class Game : Node3D
 	public override void _Input(InputEvent @event)
 	{
 		base._Input(@event);
-		if (@event.IsAction(Controls.PauseGame.ToString()))
+		var control = GetNode<Control>("PauseMenu");
+		if (@event.IsPauseEvent() && !GetTree().Paused && TurnAvailable)
 		{
+			TurnAvailable = false;
 			GetTree().Paused = true;
-			GetNode<Control>("PauseMenu").Show();
+			control.Show();
 			
 
 		}
@@ -42,7 +61,6 @@ public partial class Game : Node3D
 	}
 	private void PlaceGrunt(Vector3 Location)
 	{
-		
 		var newgrunt = _gruntscene.Instantiate<Grunt>();
 		newgrunt.Position = Location;
 		AddChild(newgrunt);

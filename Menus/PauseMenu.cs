@@ -1,3 +1,4 @@
+using GMTKGameJam2023.Scripts;
 using Godot;
 
 namespace GMTKGameJam2023
@@ -24,6 +25,8 @@ namespace GMTKGameJam2023
 		private void OnPauseButtonPressed()
 		{
 			Hide();
+			var game = GetNode<Game>("/root/Demo");
+			game._turnTimer.Start();
 			GetTree().Paused = false;
 			
 		}
@@ -35,8 +38,13 @@ namespace GMTKGameJam2023
 
 		public override void _Input(InputEvent @event)
 		{
-			;
-			base._Input(@event);
+			if (@event.IsPauseEvent() && Visible)
+			{
+				OnPauseButtonPressed();
+				@event.Dispose();
+			}
+
+			
 		}
 	}
 }

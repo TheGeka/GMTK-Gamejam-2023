@@ -82,4 +82,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 24)
 [node name="Grunt" parent="UnitContainer" instance=ExtResource("2_fkyrw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 34)
 
-[node name="CanvasLayer" parent="." instance=ExtResource("6_esfy3")]
+[node name="HUD" parent="." instance=ExtResource("6_esfy3")]

@@ -1,9 +1,12 @@
-[gd_scene format=3 uid="uid://c3m540qsh6dve"]
+[gd_scene load_steps=2 format=3 uid="uid://c3m540qsh6dve"]
+
+[ext_resource type="Script" path="res://Menus/HUD/HUD.cs" id="1_u8ump"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 follow_viewport_enabled = true
+script = ExtResource("1_u8ump")
 
-[node name="Resources" type="Label" parent="."]
+[node name="ResourceLabel" type="Label" parent="."]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0

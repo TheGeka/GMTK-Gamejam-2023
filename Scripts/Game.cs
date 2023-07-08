@@ -16,25 +16,42 @@ public partial class Game : Node3D
 		AutoReset = false
 	};
 
+	private int Resource
+	{
+		get => _resource;
+		set
+		{
+			_resource = value;
+			_hud.UpdateResources(value);
+		}
+	}
+
 	private bool _turnAvailable = true;
 
 	internal SelectableUnits _SelectedUnit;
 	Node ChildContainer;
+	private HUD _hud;
 	
 	
 	
 	private PackedScene _gruntscene;
+
+	private int _resource;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		_gruntscene = GD.Load<PackedScene>("res://Units/Grunt/grunt.tscn");
+		_hud = GetNode<HUD>("HUD");
 		ChildContainer = GetNode("UnitContainer");
 		TurnTimer.Elapsed += (sender, args) =>
 		{
 			_turnAvailable = true;
 			GD.Print("Timer elapsed");
 		};
-		
+
+		Resource = 100;
+
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -62,6 +79,7 @@ public partial class Game : Node3D
 				switch (_SelectedUnit)
 				{
 					case SelectableUnits.Grunt:
+						
 						SpawnGrunt(intersection["position"].AsVector3());
 						break;
 					case SelectableUnits.Unit2:

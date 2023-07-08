@@ -6,6 +6,7 @@ namespace GMTKGameJam2023
 
     public partial class Grunt : Units.Units
     {
+        public static int Cost { get; set; } = 50;
         protected override float HitPoints { get; set; } = 20;
         protected override float CarryWeight { get; set; } = 1;
         protected override float Damage { get; set; } = 1;

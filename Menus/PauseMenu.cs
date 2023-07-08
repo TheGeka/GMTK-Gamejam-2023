@@ -4,13 +4,13 @@ using Godot;
 
 namespace GMTKGameJam2023
 {
-	public partial class PauseMenu : Control
+	public partial class PauseMenu : CanvasLayer
 	{
 		private Game _gameManager;
 		// Called when the node enters the scene tree for the first time.
 		public override void _Ready()
 		{
-			var selectGrunt = GetNode<Button>("Grunt");
+			var selectGrunt = GetNode<Button>("ButtonContainer/Grunt");
 			_gameManager = GetNode<Game>("/root/Demo");
 			selectGrunt.Pressed += () =>
 			{
@@ -18,13 +18,13 @@ namespace GMTKGameJam2023
 				_gameManager._SelectedUnit = SelectableUnits.Grunt;
 
 			};
-			var SelectUnit2 = GetNode<Button>("Unit2");
+			var SelectUnit2 = GetNode<Button>("ButtonContainer/Unit2");
 			SelectUnit2.Pressed += () =>
 			{
 				GD.Print("Unit2 Selected");
 				_gameManager._SelectedUnit = SelectableUnits.Unit2;
 			};
-			var unpause = GetNode<Button>("Unpause");
+			var unpause = GetNode<Button>("ButtonContainer8/Unpause");
 			unpause.Pressed += OnPauseButtonPressed;
 		}
 

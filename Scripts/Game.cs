@@ -9,32 +9,59 @@ using Timer = System.Timers.Timer;
 
 public partial class Game : Node3D
 {
+	[Export] private static float _resourceInterval = 5;
+	
 	internal readonly Timer TurnTimer = new Timer()
 	{
 		Interval = TimeSpan.FromSeconds(5).TotalMilliseconds,
-		Enabled = true,
+		Enabled = false,
 		AutoReset = false
 	};
+
+	internal readonly Timer ResourceTimer = new()
+	{
+		Interval = TimeSpan.FromSeconds(_resourceInterval).TotalMilliseconds,
+		Enabled = true,
+		AutoReset = true
+	};
+
+	private int Resource
+	{
+		get => _resource;
+		set
+		{
+			_resource = value;
+			_hud.CallDeferred("UpdateResources", value);
+		}
+	}
 
 	private bool _turnAvailable = true;
 
 	internal SelectableUnits _SelectedUnit;
 	Node ChildContainer;
+	private HUD _hud;
 	
 	
 	
 	private PackedScene _gruntscene;
+
+	private int _resource;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		_gruntscene = GD.Load<PackedScene>("res://Units/Grunt/grunt.tscn");
+		_hud = GetNode<HUD>("HUD");
 		ChildContainer = GetNode("UnitContainer");
 		TurnTimer.Elapsed += (sender, args) =>
 		{
 			_turnAvailable = true;
 			GD.Print("Timer elapsed");
 		};
-		
+		ResourceTimer.Elapsed += (sender, args) => Resource += 100;
+
+		Resource = 100;
+
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -45,7 +72,7 @@ public partial class Game : Node3D
 	public override void _Input(InputEvent @event)
 	{
 		base._Input(@event);
-		var control = GetNode<Control>("PauseMenu");
+		var control = GetNode<PauseMenu>("PauseMenu");
 		if (@event.IsControl(Controls.PauseGame) && !GetTree().Paused && _turnAvailable)
 		{
 			_turnAvailable = false;
@@ -62,7 +89,12 @@ public partial class Game : Node3D
 				switch (_SelectedUnit)
 				{
 					case SelectableUnits.Grunt:
-						SpawnGrunt(intersection["position"].AsVector3());
+						if (Resource >= Grunt.Cost)
+						{
+							Resource -= Grunt.Cost;
+							SpawnGrunt(intersection["position"].AsVector3());
+						}
+						
 						break;
 					case SelectableUnits.Unit2:
 						break;

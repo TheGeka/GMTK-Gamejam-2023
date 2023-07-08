@@ -5,7 +5,7 @@ namespace GMTKGameJam2023;
 public partial class Units : Godot.CharacterBody3D
 {
 	protected virtual float HitPoints { get; set; }
-	protected virtual float CarryWeight { get; set; }    
+	protected virtual float CarryWeight { get; set; }
 	protected virtual float Reach { get; set; }
 	protected virtual float MovementSpeed { get; set; }
 
@@ -69,17 +69,20 @@ public partial class Units : Godot.CharacterBody3D
 		base._Input(@event);
 		if (@event is InputEventMouseButton mouseButtonEvent)
 		{
-			var camera = GetTree().Root.GetCamera3D();
-			var intersection = camera.CastRay(GetWorld3D().DirectSpaceState, mouseButtonEvent.Position);
-
-			if (intersection != null)
+			if (mouseButtonEvent.ButtonIndex == MouseButton.Left && mouseButtonEvent.Pressed)
 			{
-				var pos = intersection["position"].AsVector3();
-				GD.Print($"Clicked on: X: {pos.X}, Y: {pos.Y}, Z: {pos.Z} ");
+				var camera = GetTree().Root.GetCamera3D();
+				var intersection = camera.CastRay(GetWorld3D().DirectSpaceState, mouseButtonEvent.Position);
 
-				MovementTarget = pos;
+				if (intersection != null)
+				{
+					var pos = intersection["position"].AsVector3();
+					GD.Print($"Clicked on: X: {pos.X}, Y: {pos.Y}, Z: {pos.Z} ");
+
+					MovementTarget = pos;
+				}
+				//MovementTarget = new Vector3(mouseButtonEvent.Position.X, 0, mouseButtonEvent.Position.Y);
 			}
-			//MovementTarget = new Vector3(mouseButtonEvent.Position.X, 0, mouseButtonEvent.Position.Y);
 		}
 	}
 

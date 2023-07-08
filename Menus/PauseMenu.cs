@@ -18,11 +18,11 @@ namespace GMTKGameJam2023
 				_gameManager._SelectedUnit = SelectableUnits.Grunt;
 
 			};
-			var SelectUnit2 = GetNode<Button>("ButtonContainer/Unit2");
+			var SelectUnit2 = GetNode<Button>("ButtonContainer/Ranger");
 			SelectUnit2.Pressed += () =>
 			{
-				GD.Print("Unit2 Selected");
-				_gameManager._SelectedUnit = SelectableUnits.Unit2;
+				GD.Print("Ranger Selected");
+				_gameManager._SelectedUnit = SelectableUnits.Ranger;
 			};
 			var unpause = GetNode<Button>("ButtonContainer8/Unpause");
 			unpause.Pressed += OnPauseButtonPressed;
@@ -31,10 +31,10 @@ namespace GMTKGameJam2023
 		private void OnPauseButtonPressed()
 		{
 			Hide();
-			
+
 			_gameManager.TurnTimer.Start();
 			GetTree().Paused = false;
-			
+
 		}
 
 		// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -50,7 +50,7 @@ namespace GMTKGameJam2023
 				@event.Dispose();
 			}
 
-			
+
 		}
 	}
 }

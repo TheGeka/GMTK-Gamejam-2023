@@ -4,14 +4,14 @@ using System.Linq;
 namespace GMTKGameJam2023
 {
 
-	public partial class Grunt : Units.Units
+	public partial class Ranger : Units.Units
 	{
-		public static int Cost { get; set; } = 50;
+		public static int Cost { get; set; } = 100;
 		protected override float HitPoints { get; set; } = 20;
 		protected override float CarryWeight { get; set; } = 1;
 		protected override float Damage { get; set; } = 1;
 		protected override float AttackSpeed { get; set; } = 1;
-		protected override float Reach { get; set; } = 1;
+		protected override float Reach { get; set; } = 10;
 		protected override float MovementSpeed { get; set; } = 10.0f;
 		protected override List<string> EnemyGroups { get; set; } = new List<string>() { "Protagonists" };
 

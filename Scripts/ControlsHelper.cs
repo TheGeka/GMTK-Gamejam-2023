@@ -13,5 +13,14 @@ namespace GMTKGameJam2023.Scripts
             }
             return false;
         }
+
+        public static bool IsControl(this InputEvent inputEvent, Controls control) 
+        {
+            if (inputEvent.IsAction(control.ToString()) && inputEvent.IsActionReleased(control.ToString(), true))
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

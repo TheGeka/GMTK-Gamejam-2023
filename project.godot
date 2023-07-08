@@ -14,6 +14,7 @@ config/name="GMTKGameJam2023"
 run/main_scene="res://Scenes/Maps/demo.tscn"
 config/features=PackedStringArray("4.1", "C#", "Forward Plus")
 config/icon="res://icon.svg"
+<<<<<<<Updatedupstreamrun/main_scene="res://node_3d.tscn"
 
 [dotnet]
 

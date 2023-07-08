@@ -69,15 +69,8 @@ public partial class Units : Godot.CharacterBody3D
 		base._Input(@event);
 		if (@event is InputEventMouseButton mouseButtonEvent)
 		{
-			var spaceState = GetWorld3D().DirectSpaceState;
 			var camera = GetTree().Root.GetCamera3D();
-			var rayOrigin = camera.ProjectRayOrigin(mouseButtonEvent.Position);
-			var rayEnd = rayOrigin + camera.ProjectRayNormal(mouseButtonEvent.Position) * 2000;
-			var intersection = spaceState.IntersectRay(new PhysicsRayQueryParameters3D()
-			{
-				From = rayOrigin,
-				To = rayEnd
-			});
+			var intersection = camera.CastRay(GetWorld3D().DirectSpaceState, mouseButtonEvent.Position);
 
 			if (intersection != null)
 			{

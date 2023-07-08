@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckinvmmoik44m"]
+
+[ext_resource type="PackedScene" uid="uid://dm7quxyt4xk21" path="res://Resources/fence.tscn" id="2_boxa6"]
+
+[node name="TShapeFences" type="Node3D"]
+
+[node name="Fence" parent="." instance=ExtResource("2_boxa6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.5)
+
+[node name="Fence2" parent="." instance=ExtResource("2_boxa6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.5)
+
+[node name="Fence3" parent="." instance=ExtResource("2_boxa6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 1.5)
+
+[node name="Fence4" parent="." instance=ExtResource("2_boxa6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, -1.5)
+
+[node name="Fence5" parent="." instance=ExtResource("2_boxa6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, 1.5)
+
+[node name="Fence6" parent="." instance=ExtResource("2_boxa6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.5, 0.5, 1)
+
+[node name="Fence7" parent="." instance=ExtResource("2_boxa6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.5, 0.5, -1)
+
+[node name="Fence8" parent="." instance=ExtResource("2_boxa6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -1.5)

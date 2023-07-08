@@ -1,5 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://decgpdjyieqy0"]
 
+[ext_resource type="Script" path="res://Scripts/SpawnGrunt.cs" id="1_eou16"]
+[ext_resource type="Material" uid="uid://ctt17fujbbawx" path="res://Resources/light_material.tres" id="2_11fi1"]
 [ext_resource type="Script" path="res://Scripts/Game.cs" id="1_mgfwb"]
 [ext_resource type="Material" uid="uid://ctt17fujbbawx" path="res://Resources/light_material.tres" id="2_11fi1"]
 [ext_resource type="PackedScene" path="res://Menus/PauseMenu.tscn" id="3_2v80t"]
@@ -97,63 +99,3 @@ fov = 100.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.965926, 0.258819, 0, -0.258819, -0.965926, 0, 23, -98)
-
-[node name="WhiteLights" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -81)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="WhiteLights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-light_energy = 100.0
-
-[node name="OmniLight3D2" type="OmniLight3D" parent="WhiteLights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 2, 0)
-light_energy = 100.0
-
-[node name="OmniLight3D3" type="OmniLight3D" parent="WhiteLights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 2, 0)
-light_energy = 100.0
-
-[node name="OmniLight3D4" type="OmniLight3D" parent="WhiteLights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 2, 0)
-light_energy = 100.0
-
-[node name="OmniLight3D5" type="OmniLight3D" parent="WhiteLights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 2, 0)
-light_energy = 100.0
-
-[node name="DarkLights" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 81)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="DarkLights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-light_color = Color(0, 0, 0.223529, 1)
-light_energy = 100.0
-
-[node name="OmniLight3D2" type="OmniLight3D" parent="DarkLights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 2, 0)
-light_color = Color(0, 0, 0.223529, 1)
-light_energy = 100.0
-
-[node name="OmniLight3D3" type="OmniLight3D" parent="DarkLights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 2, 0)
-light_color = Color(0, 0, 0.223529, 1)
-light_energy = 100.0
-
-[node name="OmniLight3D4" type="OmniLight3D" parent="DarkLights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 2, 0)
-light_color = Color(0, 0, 0.223529, 1)
-light_energy = 100.0
-
-[node name="OmniLight3D5" type="OmniLight3D" parent="DarkLights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 2, 0)
-light_color = Color(0, 0, 0.223529, 1)
-light_energy = 100.0
-
-[node name="FogVolume" type="FogVolume" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.84514, 2.90488, -1.9407)
-shape = 4
-material = SubResource("FogMaterial_p7nuc")
-
-[node name="PauseMenu" parent="." instance=ExtResource("3_2v80t")]
-
-[node name="UnitContainer" type="Node" parent="."]

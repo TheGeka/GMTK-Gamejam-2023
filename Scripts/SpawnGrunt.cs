@@ -8,7 +8,7 @@ public partial class SpawnGrunt : Node3D
 
     private void PlaceGrunt(Vector3 Location)
     {
-        gruntscene = GD.Load<PackedScene>("res://grunt.tscn");
+        gruntscene = GD.Load<PackedScene>("res://Units/Grunt/grunt.tscn");
         var newgrunt = gruntscene.Instantiate<Grunt>();
         newgrunt.Position = Location;
         AddChild(newgrunt);

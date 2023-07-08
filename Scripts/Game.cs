@@ -19,7 +19,7 @@ public partial class Game : Node3D
 	private bool _turnAvailable = true;
 
 	internal SelectableUnits _SelectedUnit;
-	
+	Node ChildContainer;
 	
 	
 	
@@ -28,6 +28,7 @@ public partial class Game : Node3D
 	public override void _Ready()
 	{
 		_gruntscene = GD.Load<PackedScene>("res://Units/Grunt/grunt.tscn");
+		ChildContainer = GetNode("UnitContainer");
 		TurnTimer.Elapsed += (sender, args) =>
 		{
 			_turnAvailable = true;
@@ -48,13 +49,13 @@ public partial class Game : Node3D
 		if (@event.IsPauseEvent() && !GetTree().Paused && _turnAvailable)
 		{
 			_turnAvailable = false;
-			GetTree().Paused = true;
+			ChildContainer.GetTree().Paused = true;
 			control.Show();
 			
 
 		}
 		if (@event is InputEventMouseButton mouseButtonEvent)
-			if (mouseButtonEvent.ButtonIndex == MouseButton.Right && mouseButtonEvent.Pressed)
+			if (mouseButtonEvent.ButtonIndex == MouseButton.Right && mouseButtonEvent.Pressed && GetTree().Paused)
 			{
 				var camera = GetTree().Root.GetCamera3D();
 				var intersection = camera.CastRay(GetWorld3D().DirectSpaceState, mouseButtonEvent.Position);
@@ -74,6 +75,6 @@ public partial class Game : Node3D
 	{
 		var newgrunt = _gruntscene.Instantiate<Grunt>();
 		newgrunt.Position = Location;
-		AddChild(newgrunt);
+		ChildContainer.AddChild(newgrunt);
 	}
 }

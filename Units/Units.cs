@@ -14,9 +14,7 @@ public partial class Units : CharacterBody3D
     public float gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
 
     private NavigationAgent3D _navigationAgent;
-
-    private Vector3 _movementTargetPosition = new(-3.0f, 0.0f, 2.0f);
-
+    
     public Vector3 MovementTarget
     {
         get => _navigationAgent.TargetPosition;
@@ -62,7 +60,6 @@ public partial class Units : CharacterBody3D
         await ToSignal(GetTree(), SceneTree.SignalName.PhysicsFrame);
 
         // Now that the navigation map is no longer empty, set the movement target.
-        MovementTarget = _movementTargetPosition;
     }
 
     public override void _Input(InputEvent @event)

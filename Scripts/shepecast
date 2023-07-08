@@ -1,0 +1,14 @@
+using Godot;
+using System;
+
+public partial class ShapeCast3D : Godot.ShapeCast3D
+{
+	public void Detection()
+	{
+		var node = GetNode<ShapeCast3D>("BasicSurvivor/ShapeCast3D");
+		if (node.IsColliding())
+		{
+			GD.Print(node.GetCollider(0).ToString());
+		};
+	}
+}

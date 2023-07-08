@@ -2,34 +2,30 @@
 
 [ext_resource type="Script" path="res://Menus/PauseMenu.cs" id="1_ohuie"]
 
-[node name="PauseMenu" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="PauseMenus" type="CanvasLayer"]
+follow_viewport_enabled = true
 script = ExtResource("1_ohuie")
 
-[node name="Grunt" type="Button" parent="."]
-layout_mode = 0
-offset_top = 533.0
-offset_right = 237.0
-offset_bottom = 650.0
+[node name="FlowContainer" type="FlowContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -575.0
+offset_top = -54.0
+offset_right = 572.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Grunt" type="Button" parent="FlowContainer"]
+layout_mode = 2
 text = "Grunt"
 
-[node name="Unit2" type="Button" parent="."]
-layout_mode = 0
-offset_left = 277.0
-offset_top = 533.0
-offset_right = 543.0
-offset_bottom = 645.0
+[node name="Unit2" type="Button" parent="FlowContainer"]
+layout_mode = 2
 text = "Unit2"
 
-[node name="Unpause" type="Button" parent="."]
-layout_mode = 0
-offset_left = 570.0
-offset_top = 516.0
-offset_right = 1022.0
-offset_bottom = 645.0
+[node name="Unpause" type="Button" parent="FlowContainer"]
+layout_mode = 2
 text = "Unpause"

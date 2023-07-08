@@ -45,7 +45,7 @@ public partial class Game : Node3D
 	public override void _Input(InputEvent @event)
 	{
 		base._Input(@event);
-		var control = GetNode<Control>("PauseMenu");
+		var control = GetNode<PauseMenu>("PauseMenu");
 		if (@event.IsControl(Controls.PauseGame) && !GetTree().Paused && _turnAvailable)
 		{
 			_turnAvailable = false;

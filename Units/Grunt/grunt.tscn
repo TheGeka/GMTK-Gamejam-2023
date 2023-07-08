@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://kg84jashl7fa"]
 
-[ext_resource type="Script" path="res://Grunt.cs" id="1_niuwe"]
+[ext_resource type="Script" path="res://Units/Grunt/Grunt.cs" id="1_niuwe"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n7087"]
 height = 1.67768

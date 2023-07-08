@@ -1,4 +1,5 @@
-namespace GMTKGameJam2023
+namespace GMTKGameJam2023.Units.Grunt;
+public partial class Grunt : Units
 {
 	protected override float HitPoints { get; set; } = 1;
 	protected override float CarryWeight { get; set; } = 1;

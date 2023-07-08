@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bdv2y473x2ku8"]
+[gd_scene load_steps=4 format=3 uid="uid://kg84jashl7fa"]
 
-[ext_resource type="Script" path="res://Grunt.cs" id="1_w3kcw"]
+[ext_resource type="Script" path="res://Units/Grunt/Grunt.cs" id="1_w3kcw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n7087"]
 height = 1.67768

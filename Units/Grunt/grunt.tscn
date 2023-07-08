@@ -1,24 +1,27 @@
-[gd_scene load_steps=5 format=3 uid="uid://kg84jashl7fa"]
+[gd_scene load_steps=6 format=3 uid="uid://kg84jashl7fa"]
 
 [ext_resource type="Script" path="res://Units/Grunt/Grunt.cs" id="1_wbryl"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n7087"]
-radius = 0.786945
-height = 1.67768
+height = 1.9
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f5w51"]
 albedo_color = Color(0, 0.466667, 0, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_nvg03"]
 
-[node name="Grunt" type="CharacterBody3D"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_2gled"]
+height = 0.5
+radius = 1.0
+
+[node name="Grunt" type="CharacterBody3D" groups=["Horde"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("1_wbryl")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.789221, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0158136, 0)
 shape = SubResource("CapsuleShape3D_n7087")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -27,6 +30,6 @@ mesh = SubResource("CapsuleMesh_nvg03")
 
 [node name="Area3D" type="Area3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.912452, 0)
-shape = SubResource("CapsuleShape3D_n7087")
+[node name="AttackRadius" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.119173, 0)
+shape = SubResource("CylinderShape3D_2gled")

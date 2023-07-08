@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using GMTKGameJam2023.Scripts;
 using Godot;
 
@@ -9,6 +10,9 @@ public partial class Units : CharacterBody3D
     protected virtual float CarryWeight { get; set; }
     protected virtual float Reach { get; set; }
     protected virtual float MovementSpeed { get; set; }
+    protected virtual Area3D attackRadiusArea { get; set; }
+    
+    protected virtual List<string> EnemyGroups { get; set; }
 
     // Get the gravity from the project settings to be synced with RigidBody nodes.
     public float gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
@@ -26,11 +30,9 @@ public partial class Units : CharacterBody3D
     {
         base._Ready();
 
-        var cs = GetNode<Area3D>("Area3D");
-        cs.BodyEntered += body =>
-        {
-            GD.Print("Collision");
-        };
+        EnemyGroups = new List<string>();
+        attackRadiusArea = GetNode<Area3D>("Area3D");
+        attackRadiusArea.BodyEntered += OnAttackRadiusEntered;
         _navigationAgent = GetNode<NavigationAgent3D>("NavigationAgent3D");
 
         // These values need to be adjusted for the actor's speed
@@ -40,6 +42,11 @@ public partial class Units : CharacterBody3D
 
         // Make sure to not await during _Ready.
         Callable.From(ActorSetup).CallDeferred();
+    }
+
+    private void OnAttackRadiusEntered(Node3D enteredUnit)
+    {
+        GD.Print($"{attackRadiusArea.GetParent().Name} Collision with {enteredUnit.Name}");
     }
 
     public override void _PhysicsProcess(double delta)

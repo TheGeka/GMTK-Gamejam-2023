@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://decgpdjyieqy0"]
+[gd_scene load_steps=11 format=3 uid="uid://decgpdjyieqy0"]
 
+[ext_resource type="Script" path="res://SpawnGrunt.cs" id="1_1kj1t"]
 [ext_resource type="Script" path="res://Grunt.cs" id="1_f5kp5"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_vh0oj"]
@@ -27,6 +28,7 @@ height = 1.67768
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_nvg03"]
 
 [node name="Demo" type="Node3D"]
+script = ExtResource("1_1kj1t")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_vh0oj")

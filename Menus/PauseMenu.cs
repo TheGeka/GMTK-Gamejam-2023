@@ -32,6 +32,11 @@ namespace GMTKGameJam2023
 		public override void _Process(double delta)
 		{
 		}
-	
+
+		public override void _Input(InputEvent @event)
+		{
+			;
+			base._Input(@event);
+		}
 	}
 }

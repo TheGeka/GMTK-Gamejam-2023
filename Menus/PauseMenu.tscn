@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://entuos75eb64"]
+
+[ext_resource type="Script" path="res://Menus/PauseMenu.cs" id="1_ohuie"]
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ohuie")
+
+[node name="Grunt" type="Button" parent="."]
+layout_mode = 0
+offset_top = 533.0
+offset_right = 237.0
+offset_bottom = 650.0
+text = "Grunt"
+
+[node name="Unit2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 277.0
+offset_top = 533.0
+offset_right = 543.0
+offset_bottom = 645.0
+text = "Unit2"
+
+[node name="Unpause" type="Button" parent="."]
+layout_mode = 0
+offset_left = 570.0
+offset_top = 516.0
+offset_right = 1022.0
+offset_bottom = 645.0
+text = "Unpause"

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://kg84jashl7fa"]
+[gd_scene load_steps=7 format=3 uid="uid://kg84jashl7fa"]
 
 [ext_resource type="Script" path="res://Units/Grunt/Grunt.cs" id="1_wbryl"]
 [ext_resource type="ArrayMesh" uid="uid://cnexyxh4n5uno" path="res://Resources/Alien/Alien.obj" id="2_wsyvn"]
 [ext_resource type="PackedScene" path="res://Units/SelectionRing.tscn" id="3_1reej"]
+[ext_resource type="PackedScene" uid="uid://ces07ivpv0gu6" path="res://Menus/HP-Bar/HP-Bar.tscn" id="4_vr4bv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n7087"]
 height = 1.9
@@ -33,3 +34,6 @@ shape = SubResource("CylinderShape3D_2gled")
 
 [node name="SelectionRing" parent="." instance=ExtResource("3_1reej")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00481798, -0.810894, 0)
+
+[node name="HealthBar3D" parent="." instance=ExtResource("4_vr4bv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05663, 0)

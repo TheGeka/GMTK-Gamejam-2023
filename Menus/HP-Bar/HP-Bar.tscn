@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://ces07ivpv0gu6"]
+
+[ext_resource type="Texture2D" uid="uid://cprqdb5pvgu3f" path="res://Resources/Textures/HP-Bar/barHorizontal_green_mid 200.png" id="1_u85ln"]
+[ext_resource type="Script" path="res://Menus/HP-Bar/HPBar.cs" id="2_kvkpo"]
+[ext_resource type="Script" path="res://Menus/HP-Bar/HealthBar2D.cs" id="3_r13o6"]
+
+[node name="HealthBar3D" type="Sprite3D"]
+billboard = 1
+script = ExtResource("2_kvkpo")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+own_world_3d = true
+size = Vector2i(200, 26)
+size_2d_override = Vector2i(200, 26)
+
+[node name="HealthBar2D" type="TextureProgressBar" parent="SubViewport"]
+offset_right = 40.0
+offset_bottom = 40.0
+value = 100.0
+texture_progress = ExtResource("1_u85ln")
+script = ExtResource("3_r13o6")

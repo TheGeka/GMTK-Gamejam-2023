@@ -7,6 +7,7 @@ namespace GMTKGameJam2023.Units;
 
 public partial class Units : CharacterBody3D
 {
+    protected virtual float MaxHitPoints { get; set; }
     protected virtual float HitPoints { get; set; }
     protected virtual float CarryWeight { get; set; }
     protected virtual float Reach { get; set; }
@@ -18,6 +19,8 @@ public partial class Units : CharacterBody3D
     protected List<Units> _enemiesInRange { get; set; } = new();
     protected double _swingTimer;
     protected Units _target;
+    private HealthBar2D hpBar;
+    private Game _gameManager;
 
     public bool Selected
     {
@@ -47,10 +50,13 @@ public partial class Units : CharacterBody3D
     public override void _Ready()
     {
         base._Ready();
-
+        _gameManager = GetNode<Game>("/root/Demo");
+        MaxHitPoints = HitPoints;
         attackRadiusArea = GetNode<Area3D>("Area3D");
         attackRadiusArea.BodyEntered += OnAttackRadiusEntered;
         attackRadiusArea.BodyExited += AttackRadiusAreaOnBodyExited;
+        hpBar = GetNode<HealthBar2D>("HealthBar3D/SubViewport/HealthBar2D");
+        hpBar.MaxValue = MaxHitPoints;
         _navigationAgent = GetNode<NavigationAgent3D>("NavigationAgent3D");
 
         // These values need to be adjusted for the actor's speed
@@ -127,6 +133,7 @@ public partial class Units : CharacterBody3D
     public virtual void TakeDamage(float damage)
     {
         HitPoints -= damage;
+        hpBar.UpdateHpBar(HitPoints);
         if (HitPoints <= 0)
             // GD.Print($"[{Name}] Taking {damage} damage");
             // GD.Print($"Hitpoints below 0: {HitPoints}");
@@ -135,6 +142,7 @@ public partial class Units : CharacterBody3D
 
     private void Die()
     {
+        GetNode<CameraControl>("/root/Demo/MainCamera")._selection.Remove(this);
         RemoveChild(this);
         Free();
     }

@@ -15,7 +15,7 @@ public partial class CameraControl : Camera3D
     [Export] private float minZoom = 0.5f;
 
     private Vector2 _previousMousePosition;
-    private List<Units> _selection = new();
+    internal List<Units> _selection = new();
     private Selector _selector;
     private Game _gameManager;
 

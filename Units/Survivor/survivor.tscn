@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://d2ed2wi11yadi"]
+[gd_scene load_steps=6 format=3 uid="uid://d2ed2wi11yadi"]
 
 [ext_resource type="Script" path="res://Units/Survivor/Survivor.cs" id="1_62lkq"]
 [ext_resource type="ArrayMesh" uid="uid://cjsvmn3qys12t" path="res://Resources/Alien/Roman Centurion.obj" id="2_yijmm"]
+[ext_resource type="PackedScene" uid="uid://ces07ivpv0gu6" path="res://Menus/HP-Bar/HP-Bar.tscn" id="3_n1810"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k6v14"]
 radius = 0.75
@@ -11,7 +12,7 @@ height = 1.9
 height = 0.5
 radius = 2.0
 
-[node name="Survivor" type="CharacterBody3D"]
+[node name="Survivor" type="CharacterBody3D" groups=["Protagonists"]]
 script = ExtResource("1_62lkq")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
@@ -27,3 +28,6 @@ mesh = ExtResource("2_yijmm")
 
 [node name="AttackRadius" type="CollisionShape3D" parent="Area3D" groups=["Protagonists"]]
 shape = SubResource("CylinderShape3D_3db46")
+
+[node name="HealthBar3D" parent="." instance=ExtResource("3_n1810")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19981, 0)

@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://by1uc5mfj3kbv" path="res://Resources/corner_fences.tscn" id="4_v2epw"]
 [ext_resource type="PackedScene" uid="uid://1patdkd6oest" path="res://Resources/i_fences.tscn" id="5_blp4n"]
 [ext_resource type="PackedScene" uid="uid://c6jft8ften74k" path="res://Resources/4_way_fences.tscn" id="6_iuf0o"]
+[ext_resource type="PackedScene" uid="uid://d2ed2wi11yadi" path="res://Units/Survivor/survivor.tscn" id="9_mdxhw"]
+
 [ext_resource type="Script" path="res://Scripts/CameraControl.cs" id="9_cernc"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_vh0oj"]

@@ -100,25 +100,11 @@ public partial class Units : CharacterBody3D
 		// Now that the navigation map is no longer empty, set the movement target.
 	}
 
-	public override void _Input(InputEvent @event)
-	{
-		base._Input(@event);
-		if (@event is InputEventMouseButton mouseButtonEvent)
-			if (mouseButtonEvent.ButtonIndex == MouseButton.Left && mouseButtonEvent.Pressed)
-			{
-				var camera = GetTree().Root.GetCamera3D();
-				var intersection = camera.CastRay(GetWorld3D().DirectSpaceState, mouseButtonEvent.Position);
-
-				if (intersection != null && intersection.Count > 0)
-				{
-					var pos = intersection["position"].AsVector3();
-					GD.Print($"Clicked on: X: {pos.X}, Y: {pos.Y}, Z: {pos.Z} ");
-
-					MovementTarget = pos;
-				}
-				//MovementTarget = new Vector3(mouseButtonEvent.Position.X, 0, mouseButtonEvent.Position.Y);
-			}
-	}
+    public override void _Input(InputEvent @event)
+    {
+        base._Input(@event);
+            
+    }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bd4gd3xw7pvxd"
+path="res://.godot/imported/Ranged Alien.obj-71d3fbd21cb1adbed980dcaae0237703.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Ranged Alien.obj-71d3fbd21cb1adbed980dcaae0237703.mesh"]
+
+source_file="res://Resources/Alien/Ranged Alien.obj"
+dest_files=["res://.godot/imported/Ranged Alien.obj-71d3fbd21cb1adbed980dcaae0237703.mesh", "res://.godot/imported/Ranged Alien.obj-71d3fbd21cb1adbed980dcaae0237703.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

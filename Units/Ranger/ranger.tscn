@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://byjb33hbosiom"]
+
+[ext_resource type="Script" path="res://Units/Ranger/Ranger.cs" id="1_bew3r"]
+[ext_resource type="ArrayMesh" uid="uid://bd4gd3xw7pvxd" path="res://Resources/Alien/Ranged Alien.obj" id="2_4wrhd"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i0fgm"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_0owi7"]
+height = 0.5
+radius = 5.0
+
+[node name="Ranger" type="CharacterBody3D" groups=["Horde"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0421284, 1, 0.124798)
+script = ExtResource("1_bew3r")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0.1, 0.1)
+mesh = ExtResource("2_4wrhd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_i0fgm")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="AttackRadius" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.119173, 0)
+shape = SubResource("CylinderShape3D_0owi7")

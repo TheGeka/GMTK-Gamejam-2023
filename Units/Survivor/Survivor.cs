@@ -27,7 +27,7 @@ namespace GMTKGameJam2023
 				{
 					MovementTarget = GlobalPosition - -(GlobalPosition - _target.GlobalPosition);
 				}
-				
+
 				TryAttack(_target);
 			}
 		}

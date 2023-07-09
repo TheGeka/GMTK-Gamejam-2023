@@ -1,7 +1,7 @@
 [gd_scene load_steps=32 format=3 uid="uid://bl8w8gaclmwl3"]
 
+[ext_resource type="Material" path="res://Resources/Materials/Stone/test.tres" id="1_jcc2o"]
 [ext_resource type="Material" uid="uid://ctt17fujbbawx" path="res://Resources/light_material.tres" id="2_11fi1"]
-[ext_resource type="Material" uid="uid://kx7l1iqxlbes" path="res://Resources/Materials/Grass/Grass.tres" id="2_q0eqs"]
 [ext_resource type="Material" path="res://Resources/Materials/Concrete/Concrete.tres" id="3_6oey5"]
 [ext_resource type="PackedScene" uid="uid://b7ynilxw06tl5" path="res://Resources/fencing5long.tscn" id="3_st51u"]
 [ext_resource type="PackedScene" uid="uid://ckinvmmoik44m" path="res://Resources/t_shape_fence.tscn" id="3_us63i"]
@@ -90,7 +90,7 @@ navigation_mesh = SubResource("NavigationMesh_vh0oj")
 shape = SubResource("BoxShape3D_ef15n")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Floor"]
-material_override = ExtResource("2_q0eqs")
+material_override = ExtResource("1_jcc2o")
 mesh = SubResource("PlaneMesh_s15wq")
 skeleton = NodePath("../..")
 
@@ -241,6 +241,7 @@ material_override = ExtResource("3_6oey5")
 mesh = SubResource("BoxMesh_pxupr")
 
 [node name="Maze" type="Node3D" parent="NavigationRegion3D/Map Content"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, -0.5, -0.4)
 
 [node name="TShapeFences" parent="NavigationRegion3D/Map Content/Maze" instance=ExtResource("3_us63i")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 81.5)
@@ -546,8 +547,17 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10.5, 
 [node name="FencingLeft11" parent="NavigationRegion3D/Map Content/Staging Area" instance=ExtResource("3_st51u")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 13, 0.5, 28)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.965926, 0.258819, 0, -0.258819, -0.965926, 0, 23, -98)
+[node name="Sun" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 7, 53, 26)
+light_energy = 100.0
+light_indirect_energy = 32.465
+spot_range = 100.0
+
+[node name="NegativeSun" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 14.2, 19, -20)
+light_energy = 6.0
+light_negative = true
+spot_range = 30.0
 
 [node name="Survivors" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -50.8313)

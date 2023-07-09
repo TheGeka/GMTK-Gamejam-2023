@@ -1,8 +1,7 @@
-namespace GMTKGameJam2023.Scripts.Enums
+namespace GMTKGameJam2023.Scripts.Enums;
+
+public enum SelectableUnits
 {
-    public enum SelectableUnits
-    {
-        Grunt,
-        Ranger
-    }
+    Grunt,
+    Ranger
 }

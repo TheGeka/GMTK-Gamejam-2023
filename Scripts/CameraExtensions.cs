@@ -22,12 +22,8 @@ public static class CameraExtensions
         Vector2 mousePosition)
     {
         var intersection = CastRay(camera, spaceState, mousePosition);
-        if (intersection.Count > 0)
-        {
-            return intersection["position"].AsVector3();
-        }
+        if (intersection.Count > 0) return intersection["position"].AsVector3();
 
         return null;
-
     }
 }

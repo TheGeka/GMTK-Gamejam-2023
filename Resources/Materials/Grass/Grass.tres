@@ -14,7 +14,6 @@ emission_enabled = true
 emission_texture = ExtResource("5")
 normal_enabled = true
 normal_texture = ExtResource("3")
-heightmap_enabled = true
 heightmap_scale = 1.875
 heightmap_deep_parallax = true
 heightmap_min_layers = 8

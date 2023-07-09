@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://ch0jym4hwjsu4"]
+
+[ext_resource type="ArrayMesh" uid="uid://3a6qxyg7wxej" path="res://Resources/Tako/Root Scene_takodachi.res" id="1_wtc78"]
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, -4.37114e-07, 10, 0, -10, -4.37114e-07, 0, 0, 0)
+mesh = ExtResource("1_wtc78")

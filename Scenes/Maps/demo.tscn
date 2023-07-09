@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Scripts/CameraControl.cs" id="5_k6t5g"]
 [ext_resource type="PackedScene" uid="uid://bl8w8gaclmwl3" path="res://Scenes/Maps/demobackup.tscn" id="5_s7m2h"]
 [ext_resource type="PackedScene" uid="uid://c3m540qsh6dve" path="res://Menus/HUD/HUD.tscn" id="6_esfy3"]
+[ext_resource type="PackedScene" uid="uid://ch0jym4hwjsu4" path="res://Resources/Tako/tako.tscn" id="9_72qii"]
 [ext_resource type="Script" path="res://Scripts/Selector.cs" id="7_35hii"]
 [ext_resource type="PackedScene" uid="uid://d2ed2wi11yadi" path="res://Units/Survivor/survivor.tscn" id="10_fdoog"]
 
@@ -277,6 +278,9 @@ transform = Transform3D(1, 0, 0, 0, -0.965926, 0.258819, 0, -0.258819, -0.965926
 
 [node name="PauseMenu" parent="." instance=ExtResource("3_2v80t")]
 visible = false
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("9_72qii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.7718, 0, 15.7355)
 
 [node name="Selector" type="Control" parent="."]
 visible = false

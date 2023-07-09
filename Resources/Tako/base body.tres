@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://difuqs0yl3ugu"]
+
+[resource]
+resource_name = "base body"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0, 0, 0, 1)
+metallic = 0.4
+emission_enabled = true
+emission = Color(0.45515, 0.396973, 0.513327, 1)

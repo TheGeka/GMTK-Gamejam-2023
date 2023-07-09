@@ -7,160 +7,140 @@ namespace GMTKGameJam2023.Units;
 
 public partial class Units : CharacterBody3D
 {
-	protected virtual float HitPoints { get; set; }
-	protected virtual float CarryWeight { get; set; }
-	protected virtual float Reach { get; set; }
-	protected virtual float Damage { get; set; }
-	protected virtual float AttackSpeed { get; set; }
-	protected virtual float MovementSpeed { get; set; }
-	protected virtual Area3D attackRadiusArea { get; set; }
+    protected virtual float HitPoints { get; set; }
+    protected virtual float CarryWeight { get; set; }
+    protected virtual float Reach { get; set; }
+    protected virtual float Damage { get; set; }
+    protected virtual float AttackSpeed { get; set; }
+    protected virtual float MovementSpeed { get; set; }
+    protected virtual Area3D attackRadiusArea { get; set; }
 
-	protected List<Units> _enemiesInRange { get; set; } = new List<Units>();
-	protected double _swingTimer;
-	protected Units _target;
+    protected List<Units> _enemiesInRange { get; set; } = new();
+    protected double _swingTimer;
+    protected Units _target;
 
-	protected virtual List<string> EnemyGroups { get; set; }
+    public bool Selected
+    {
+        get => _selected;
+        set
+        {
+            var ring = GetNode<MeshInstance3D>("SelectionRing");
+            ring.Visible = value;
+        }
+    }
 
-	// Get the gravity from the project settings to be synced with RigidBody nodes.
-	public float gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
+    protected virtual List<string> EnemyGroups { get; set; }
 
-	private NavigationAgent3D _navigationAgent;
-	
-	public Vector3 MovementTarget
-	{
-		get => _navigationAgent.TargetPosition;
-		set => _navigationAgent.TargetPosition = value;
-	}
+    // Get the gravity from the project settings to be synced with RigidBody nodes.
+    public float gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
 
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-		base._Ready();
+    private NavigationAgent3D _navigationAgent;
+    private bool _selected;
 
-		attackRadiusArea = GetNode<Area3D>("Area3D");
-		attackRadiusArea.BodyEntered += OnAttackRadiusEntered;
-		attackRadiusArea.BodyExited += AttackRadiusAreaOnBodyExited;
-		_navigationAgent = GetNode<NavigationAgent3D>("NavigationAgent3D");
+    public Vector3 MovementTarget
+    {
+        get => _navigationAgent.TargetPosition;
+        set => _navigationAgent.TargetPosition = value;
+    }
 
-		// These values need to be adjusted for the actor's speed
-		// and the navigation layout.
-		_navigationAgent.PathDesiredDistance = 0.5f;
-		_navigationAgent.TargetDesiredDistance = 0.5f;
+    // Called when the node enters the scene tree for the first time.
+    public override void _Ready()
+    {
+        base._Ready();
 
-		// Make sure to not await during _Ready.
-		Callable.From(ActorSetup).CallDeferred();
-	}
+        attackRadiusArea = GetNode<Area3D>("Area3D");
+        attackRadiusArea.BodyEntered += OnAttackRadiusEntered;
+        attackRadiusArea.BodyExited += AttackRadiusAreaOnBodyExited;
+        _navigationAgent = GetNode<NavigationAgent3D>("NavigationAgent3D");
 
-	private void AttackRadiusAreaOnBodyExited(Node3D exitedUnit)
-	{
-		GD.Print($"[{Name}] Unit: {exitedUnit.Name} left attack area");
-		if (exitedUnit != this && IsEnemy(exitedUnit))
-		{
-			_enemiesInRange.Remove((Units)exitedUnit);
-			if (_target == exitedUnit)
-			{
-				_target = null;
-			}
-		}
-	}
+        // These values need to be adjusted for the actor's speed
+        // and the navigation layout.
+        _navigationAgent.PathDesiredDistance = 0.5f;
+        _navigationAgent.TargetDesiredDistance = 0.5f;
+        GD.Print($"Spawned at {Position}");
+        // Make sure to not await during _Ready.
+        Callable.From(ActorSetup).CallDeferred();
+    }
 
-	protected virtual void OnAttackRadiusEntered(Node3D enteredUnit)
-	{
-		GD.Print($"{this.Name} Collision with {enteredUnit.Name}");
-		if (this != enteredUnit && IsEnemy(enteredUnit))
-		{
-			_enemiesInRange.Add((Units)enteredUnit);
-			TryAttack(enteredUnit);
-		}
-		
-	}
+    private void AttackRadiusAreaOnBodyExited(Node3D exitedUnit)
+    {
+        if (exitedUnit != this && IsEnemy(exitedUnit))
+        {
+            _enemiesInRange.Remove((Units)exitedUnit);
+            if (_target == exitedUnit) _target = null;
+        }
+    }
 
-	public override void _PhysicsProcess(double delta)
-	{
-		base._PhysicsProcess(delta);
+    protected virtual void OnAttackRadiusEntered(Node3D enteredUnit)
+    {
+        if (this != enteredUnit && IsEnemy(enteredUnit))
+        {
+            _enemiesInRange.Add((Units)enteredUnit);
+            TryAttack(enteredUnit);
+        }
+    }
 
-		if (_navigationAgent.IsNavigationFinished()) return;
+    public override void _PhysicsProcess(double delta)
+    {
+        base._PhysicsProcess(delta);
 
-		var currentAgentPosition = GlobalTransform.Origin;
-		var nextPathPosition = _navigationAgent.GetNextPathPosition();
+        if (_navigationAgent.IsNavigationFinished()) return;
 
-		var newVelocity = (nextPathPosition - currentAgentPosition).Normalized();
-		newVelocity *= MovementSpeed;
+        var currentAgentPosition = GlobalTransform.Origin;
+        var nextPathPosition = _navigationAgent.GetNextPathPosition();
 
-		Velocity = newVelocity;
+        var newVelocity = (nextPathPosition - currentAgentPosition).Normalized();
+        newVelocity *= MovementSpeed;
 
-		MoveAndSlide();
-	}
+        Velocity = newVelocity;
 
-	private async void ActorSetup()
-	{
-		// Wait for the first physics frame so the NavigationServer can sync.
-		await ToSignal(GetTree(), SceneTree.SignalName.PhysicsFrame);
+        MoveAndSlide();
+    }
 
-		// Now that the navigation map is no longer empty, set the movement target.
-	}
+    private async void ActorSetup()
+    {
+        // Wait for the first physics frame so the NavigationServer can sync.
+        await ToSignal(GetTree(), SceneTree.SignalName.PhysicsFrame);
 
-	public override void _Input(InputEvent @event)
-	{
-		base._Input(@event);
-		if (@event is InputEventMouseButton mouseButtonEvent)
-			if (mouseButtonEvent.ButtonIndex == MouseButton.Left && mouseButtonEvent.Pressed)
-			{
-				var camera = GetTree().Root.GetCamera3D();
-				var intersection = camera.CastRay(GetWorld3D().DirectSpaceState, mouseButtonEvent.Position);
+        // Now that the navigation map is no longer empty, set the movement target.
+    }
 
-				if (intersection != null && intersection.Count > 0)
-				{
-					var pos = intersection["position"].AsVector3();
-					GD.Print($"Clicked on: X: {pos.X}, Y: {pos.Y}, Z: {pos.Z} ");
+    public override void _Input(InputEvent @event)
+    {
+        base._Input(@event);
+    }
 
-					MovementTarget = pos;
-				}
-				//MovementTarget = new Vector3(mouseButtonEvent.Position.X, 0, mouseButtonEvent.Position.Y);
-			}
-	}
+    // Called every frame. 'delta' is the elapsed time since the previous frame.
+    public override void _Process(double delta)
+    {
+        _swingTimer += delta;
+        if (_enemiesInRange.Count > 0) _target = _enemiesInRange.First();
+        if (_swingTimer > AttackSpeed && _target != null) TryAttack(_target);
+    }
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-		_swingTimer += delta;
-		if (_enemiesInRange.Count > 0)
-		{
-			_target = _enemiesInRange.First();
-		}
-		if (_swingTimer > AttackSpeed && _target != null)
-		{
-			TryAttack(_target);
-		}
-	}
+    public virtual void TryAttack(Node3D enemy)
+    {
+        var enemyManager = (Units)enemy;
+        enemyManager.TakeDamage(Damage);
+    }
 
-	public virtual void TryAttack(Node3D enemy)
-	{
-		var enemyManager = (Units)enemy;
-		enemyManager.TakeDamage(Damage);
-	}
+    public virtual void TakeDamage(float damage)
+    {
+        HitPoints -= damage;
+        if (HitPoints <= 0)
+            // GD.Print($"[{Name}] Taking {damage} damage");
+            // GD.Print($"Hitpoints below 0: {HitPoints}");
+            Die();
+    }
 
-	public virtual void TakeDamage(float damage)
-	{
-		
-		HitPoints -= damage;
-		if (HitPoints <= 0)
-		{
-			// GD.Print($"[{Name}] Taking {damage} damage");
-			// GD.Print($"Hitpoints below 0: {HitPoints}");
-			Die();
-		}
-	}
+    private void Die()
+    {
+        RemoveChild(this);
+        Free();
+    }
 
-	private void Die()
-	{
-		RemoveChild(this);
-		Free();
-		
-	}
-
-	private bool IsEnemy(Node target)
-	{
-		return target.GetGroups().Any(targetsGroup => EnemyGroups.Contains(targetsGroup));
-	}
+    private bool IsEnemy(Node target)
+    {
+        return target.GetGroups().Any(targetsGroup => EnemyGroups.Contains(targetsGroup));
+    }
 }

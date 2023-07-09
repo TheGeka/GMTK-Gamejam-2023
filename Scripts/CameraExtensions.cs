@@ -17,4 +17,13 @@ public static class CameraExtensions
 
         return intersection;
     }
+
+    public static Vector3? GetWorldCoordinates(this Camera3D camera, PhysicsDirectSpaceState3D spaceState,
+        Vector2 mousePosition)
+    {
+        var intersection = CastRay(camera, spaceState, mousePosition);
+        if (intersection.Count > 0) return intersection["position"].AsVector3();
+
+        return null;
+    }
 }

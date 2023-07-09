@@ -1,0 +1,23 @@
+[gd_resource type="ORMMaterial3D" load_steps=6 format=3 uid="uid://kx7l1iqxlbes"]
+
+[ext_resource type="Texture2D" uid="uid://n21t3obxu3mw" path="res://Resources/Materials/Grass/Grass_albedo.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://8j8uxa7m4pv" path="res://Resources/Materials/Grass/Grass_orm.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://jlaape4u0yue" path="res://Resources/Materials/Grass/Grass_normal.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://d4gqv0mnwu1st" path="res://Resources/Materials/Grass/Grass_heightmap.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://de5h3jnkkp7q7" path="res://Resources/Materials/Grass/Grass_emission.png" id="5"]
+
+[resource]
+albedo_color = Color(0.254902, 0.254902, 0.254902, 1)
+albedo_texture = ExtResource("1")
+orm_texture = ExtResource("2")
+emission_enabled = true
+emission_texture = ExtResource("5")
+normal_enabled = true
+normal_texture = ExtResource("3")
+heightmap_enabled = true
+heightmap_scale = 1.875
+heightmap_deep_parallax = true
+heightmap_min_layers = 8
+heightmap_max_layers = 32
+heightmap_texture = ExtResource("4")
+texture_filter = 1

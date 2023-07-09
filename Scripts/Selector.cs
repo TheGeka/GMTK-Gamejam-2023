@@ -6,11 +6,9 @@ using Vector2 = Godot.Vector2;
 
 public partial class Selector : Control
 {
-	private bool _isVisible = false;
+	public Vector2 MousePosition;
 
-	private Vector2 _mousePosition;
-
-	private Vector2 _selectionStartPosition;
+	public Vector2 SelectionStartPosition;
 
 	private readonly Color _selectionBoxColor = Colors.Blue;
 
@@ -29,12 +27,12 @@ public partial class Selector : Control
 
 	public override void _Draw()
 	{
-		if (_isVisible && _mousePosition != _selectionStartPosition)
+		if (Visible && MousePosition != SelectionStartPosition)
 		{
-			DrawLine(_selectionStartPosition, new Vector2(_mousePosition.X, _selectionStartPosition.Y), _selectionBoxColor, _selectionBoxLineWidth);
-			DrawLine(_selectionStartPosition, new Vector2(_selectionStartPosition.X, _mousePosition.Y), _selectionBoxColor, _selectionBoxLineWidth);
-			DrawLine(_mousePosition, new Vector2(_mousePosition.X, _selectionStartPosition.Y), _selectionBoxColor, _selectionBoxLineWidth);
-			DrawLine(_mousePosition, new Vector2(_selectionStartPosition.X, _mousePosition.Y), _selectionBoxColor, _selectionBoxLineWidth);
+			DrawLine(SelectionStartPosition, new Vector2(MousePosition.X, SelectionStartPosition.Y), _selectionBoxColor, _selectionBoxLineWidth);
+			DrawLine(SelectionStartPosition, new Vector2(SelectionStartPosition.X, MousePosition.Y), _selectionBoxColor, _selectionBoxLineWidth);
+			DrawLine(MousePosition, new Vector2(MousePosition.X, SelectionStartPosition.Y), _selectionBoxColor, _selectionBoxLineWidth);
+			DrawLine(MousePosition, new Vector2(SelectionStartPosition.X, MousePosition.Y), _selectionBoxColor, _selectionBoxLineWidth);
 		}
 	}
 }

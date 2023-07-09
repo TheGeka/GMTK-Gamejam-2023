@@ -64,7 +64,6 @@ public partial class Units : CharacterBody3D
 
 	private void AttackRadiusAreaOnBodyExited(Node3D exitedUnit)
 	{
-		GD.Print($"[{Name}] Unit: {exitedUnit.Name} left attack area");
 		if (exitedUnit != this && IsEnemy(exitedUnit))
 		{
 			_enemiesInRange.Remove((Units)exitedUnit);
@@ -77,7 +76,6 @@ public partial class Units : CharacterBody3D
 
 	protected virtual void OnAttackRadiusEntered(Node3D enteredUnit)
 	{
-		GD.Print($"{this.Name} Collision with {enteredUnit.Name}");
 		if (this != enteredUnit && IsEnemy(enteredUnit))
 		{
 			_enemiesInRange.Add((Units)enteredUnit);

@@ -121,7 +121,7 @@ public partial class Game : Node3D
 			var newgrunt = _gruntscene.Instantiate<Grunt>();
 			newgrunt.Name = "Grunt";
 			newgrunt.Position = newLoc;
-			AddChild(newgrunt);
+			ChildContainer.AddChild(newgrunt);
 		}
 	}
 	private void SpawnRanger(Vector3 Location)
@@ -131,6 +131,6 @@ public partial class Game : Node3D
 		var newranger = _rangerscene.Instantiate<Ranger>();
 		newranger.Name = "Ranger";
 		newranger.Position = newLoc;
-		AddChild(newranger);
+		ChildContainer.AddChild(newranger);
 	}
 }

@@ -117,6 +117,7 @@ public partial class Game : Node3D
 		{
 			var newLoc = Location;
 			newLoc.X = newLoc.X + 2 + i;
+			newLoc.Y = 1;
 			var newgrunt = _gruntscene.Instantiate<Grunt>();
 			newgrunt.Name = "Grunt";
 			newgrunt.Position = newLoc;
@@ -126,6 +127,7 @@ public partial class Game : Node3D
 	private void SpawnRanger(Vector3 Location)
 	{
 		var newLoc = Location;
+		newLoc.Y = 1;
 		var newranger = _rangerscene.Instantiate<Ranger>();
 		newranger.Name = "Ranger";
 		newranger.Position = newLoc;

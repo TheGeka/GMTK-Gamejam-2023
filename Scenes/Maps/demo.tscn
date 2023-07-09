@@ -260,7 +260,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
 
 [node name="Demo2" parent="LoadedMap" instance=ExtResource("5_s7m2h")]
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="MainCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 16.66, 54.38)
 current = true
 fov = 100.0
@@ -277,9 +277,13 @@ transform = Transform3D(1, 0, 0, 0, -0.965926, 0.258819, 0, -0.258819, -0.965926
 [node name="PauseMenu" parent="." instance=ExtResource("3_2v80t")]
 visible = false
 
-[node name="Control" type="Control" parent="."]
+[node name="Selector" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("7_35hii")
+
+[node name="Camera3D2" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.976672, 0.214735, 0, -0.214735, 0.976672, -0.295568, 0.898803, 1.81506)
+fov = 113.0

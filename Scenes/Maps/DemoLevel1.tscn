@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Game.cs" id="1_mgfwb"]
 [ext_resource type="Material" uid="uid://ctt17fujbbawx" path="res://Resources/light_material.tres" id="2_11fi1"]
-[ext_resource type="Material" path="res://Resources/Materials/Concrete/Concrete.tres" id="3_6oey5"]
+[ext_resource type="Material" uid="uid://cg2t2jijw7joh" path="res://Resources/Materials/Concrete/Concrete.tres" id="3_6oey5"]
 [ext_resource type="PackedScene" uid="uid://b7ynilxw06tl5" path="res://Resources/fencing5long.tscn" id="3_st51u"]
 [ext_resource type="PackedScene" uid="uid://ckinvmmoik44m" path="res://Resources/t_shape_fence.tscn" id="3_us63i"]
 [ext_resource type="PackedScene" uid="uid://dm7quxyt4xk21" path="res://Resources/fence.tscn" id="4_6rk51"]

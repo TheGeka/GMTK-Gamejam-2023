@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using GMTKGameJam2023.Scripts;
 using GMTKGameJam2023.Scripts.Enums;
 using GMTKGameJam2023.Units;
@@ -57,7 +58,6 @@ public partial class CameraControl : Camera3D
         }
 
         _previousMousePosition = mousePosition;
-        GD.Print($"Camera Position: {Position}, Translating to {cameraTranslation}");
         Position += cameraTranslation;
     }
 
@@ -103,7 +103,8 @@ public partial class CameraControl : Camera3D
                     {
                         return;
                     }
-                    _selection.Clear();
+                    UnselectAll();
+                    unit.Selected = true;
                     _selection.Add(unit);
                 }
 
@@ -131,5 +132,15 @@ public partial class CameraControl : Camera3D
         var unit = res["collider"].As<Units>();
         return unit.IsInGroup("Horde") ? unit : null;
 
+    }
+
+    private void UnselectAll()
+    {
+        foreach (var selected in _selection)
+        {
+            selected.Selected = false;
+        }
+        _selection.Clear();
+        
     }
 }

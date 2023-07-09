@@ -19,13 +19,24 @@ public partial class Units : CharacterBody3D
 	protected double _swingTimer;
 	protected Units _target;
 
+	public bool Selected
+	{
+		get => _selected;
+		set
+		{
+			var ring = GetNode<MeshInstance3D>("SelectionRing");
+			ring.Visible = value;
+		}
+	}
+
 	protected virtual List<string> EnemyGroups { get; set; }
 
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
 	public float gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
 
 	private NavigationAgent3D _navigationAgent;
-	
+	private bool _selected;
+
 	public Vector3 MovementTarget
 	{
 		get => _navigationAgent.TargetPosition;
@@ -46,7 +57,7 @@ public partial class Units : CharacterBody3D
 		// and the navigation layout.
 		_navigationAgent.PathDesiredDistance = 0.5f;
 		_navigationAgent.TargetDesiredDistance = 0.5f;
-
+		GD.Print($"Spawned at {Position}");
 		// Make sure to not await during _Ready.
 		Callable.From(ActorSetup).CallDeferred();
 	}

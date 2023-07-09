@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://kg84jashl7fa"]
+[gd_scene load_steps=6 format=3 uid="uid://kg84jashl7fa"]
 
 [ext_resource type="Script" path="res://Units/Grunt/Grunt.cs" id="1_wbryl"]
 [ext_resource type="ArrayMesh" uid="uid://cnexyxh4n5uno" path="res://Resources/Alien/Alien.obj" id="2_wsyvn"]
+[ext_resource type="PackedScene" uid="uid://bl405bbmqnwaq" path="res://Units/SelectionRing.tscn" id="3_1reej"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n7087"]
 height = 1.9
@@ -29,3 +30,6 @@ mesh = ExtResource("2_wsyvn")
 [node name="AttackRadius" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.119173, 0)
 shape = SubResource("CylinderShape3D_2gled")
+
+[node name="SelectionRing" parent="." instance=ExtResource("3_1reej")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00481798, -0.810894, 0)

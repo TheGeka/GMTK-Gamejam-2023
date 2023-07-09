@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Units/Grunt/Grunt.cs" id="1_wbryl"]
 [ext_resource type="ArrayMesh" uid="uid://cnexyxh4n5uno" path="res://Resources/Alien/Alien.obj" id="2_wsyvn"]
-[ext_resource type="PackedScene" uid="uid://bl405bbmqnwaq" path="res://Units/SelectionRing.tscn" id="3_1reej"]
+[ext_resource type="PackedScene" path="res://Units/SelectionRing.tscn" id="3_1reej"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n7087"]
 height = 1.9

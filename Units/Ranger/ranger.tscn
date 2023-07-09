@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Units/Ranger/Ranger.cs" id="1_bew3r"]
 [ext_resource type="ArrayMesh" uid="uid://bd4gd3xw7pvxd" path="res://Resources/Alien/Ranged Alien.obj" id="2_4wrhd"]
-[ext_resource type="PackedScene" uid="uid://bl405bbmqnwaq" path="res://Units/SelectionRing.tscn" id="3_4gh3x"]
+[ext_resource type="PackedScene" path="res://Units/SelectionRing.tscn" id="3_4gh3x"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0g40l"]
 

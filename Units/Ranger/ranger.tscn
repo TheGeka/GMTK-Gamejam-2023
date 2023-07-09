@@ -1,11 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://byjb33hbosiom"]
+[gd_scene load_steps=5 format=3 uid="uid://byjb33hbosiom"]
 
 [ext_resource type="Script" path="res://Units/Ranger/Ranger.cs" id="1_bew3r"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mccy0"]
-albedo_color = Color(1, 1, 0, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_fi60k"]
+[ext_resource type="ArrayMesh" uid="uid://bd4gd3xw7pvxd" path="res://Resources/Alien/Ranged Alien.obj" id="2_4wrhd"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i0fgm"]
 
@@ -14,12 +10,12 @@ height = 0.5
 radius = 5.0
 
 [node name="Ranger" type="CharacterBody3D" groups=["Horde"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0421284, 1, 16.6719)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0421284, 1, 0.124798)
 script = ExtResource("1_bew3r")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-material_override = SubResource("StandardMaterial3D_mccy0")
-mesh = SubResource("CapsuleMesh_fi60k")
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0.1, 0.1)
+mesh = ExtResource("2_4wrhd")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_i0fgm")

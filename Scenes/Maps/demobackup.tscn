@@ -1,6 +1,5 @@
-[gd_scene load_steps=34 format=3 uid="uid://wwjxq3bnvkrn"]
+[gd_scene load_steps=32 format=3 uid="uid://bl8w8gaclmwl3"]
 
-[ext_resource type="Script" path="res://Scripts/Game.cs" id="1_mgfwb"]
 [ext_resource type="Material" uid="uid://ctt17fujbbawx" path="res://Resources/light_material.tres" id="2_11fi1"]
 [ext_resource type="Material" uid="uid://kx7l1iqxlbes" path="res://Resources/Materials/Grass/Grass.tres" id="2_q0eqs"]
 [ext_resource type="Material" path="res://Resources/Materials/Concrete/Concrete.tres" id="3_6oey5"]
@@ -10,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://by1uc5mfj3kbv" path="res://Resources/corner_fences.tscn" id="4_v2epw"]
 [ext_resource type="PackedScene" uid="uid://1patdkd6oest" path="res://Resources/i_fences.tscn" id="5_blp4n"]
 [ext_resource type="PackedScene" uid="uid://c6jft8ften74k" path="res://Resources/4_way_fences.tscn" id="6_iuf0o"]
-[ext_resource type="Script" path="res://Scripts/CameraControl.cs" id="9_cernc"]
 [ext_resource type="PackedScene" uid="uid://d2ed2wi11yadi" path="res://Units/Survivor/survivor.tscn" id="9_mdxhw"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_vh0oj"]
@@ -79,9 +77,8 @@ size = Vector3(2, 2, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_pxupr"]
 size = Vector3(2, 2, 1)
 
-[node name="Demo" type="Node3D"]
+[node name="Demo2" type="Node3D"]
 process_mode = 3
-script = ExtResource("1_mgfwb")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 process_mode = 3
@@ -548,12 +545,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10.5, 
 
 [node name="FencingLeft11" parent="NavigationRegion3D/Map Content/Staging Area" instance=ExtResource("3_st51u")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 13, 0.5, 28)
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.939693, 0.17101, -0.296198, 0, 0.866025, 0.5, 0.34202, 0.469846, -0.813798, 8.77576, 10, -14.5968)
-fov = 70.0011
-size = 30.0
-script = ExtResource("9_cernc")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.965926, 0.258819, 0, -0.258819, -0.965926, 0, 23, -98)

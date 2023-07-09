@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bcfttxo6siwqm"]
+[gd_scene load_steps=35 format=3 uid="uid://c6beuankawt6x"]
 
 [ext_resource type="Script" path="res://Scripts/Game.cs" id="1_mgfwb"]
 [ext_resource type="Material" uid="uid://ctt17fujbbawx" path="res://Resources/light_material.tres" id="2_11fi1"]
@@ -82,7 +82,7 @@ size = Vector3(2, 2, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_pxupr"]
 size = Vector3(2, 2, 1)
 
-[node name="Demo" type="Node3D"]
+[node name="Demo2" type="Node3D"]
 process_mode = 3
 script = ExtResource("1_mgfwb")
 

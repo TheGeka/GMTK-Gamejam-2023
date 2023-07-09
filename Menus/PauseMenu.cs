@@ -24,7 +24,7 @@ namespace GMTKGameJam2023
 				GD.Print("Ranger Selected");
 				_gameManager._SelectedUnit = SelectableUnits.Ranger;
 			};
-			var unpause = GetNode<Button>("ButtonContainer8/Unpause");
+			var unpause = GetNode<Button>("ButtonContainer/Unpause");
 			unpause.Pressed += OnPauseButtonPressed;
 		}
 

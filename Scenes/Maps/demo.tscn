@@ -1,10 +1,13 @@
-[gd_scene load_steps=28 format=3 uid="uid://decgpdjyieqy0"]
+[gd_scene load_steps=31 format=3 uid="uid://decgpdjyieqy0"]
 
 [ext_resource type="Script" path="res://Scripts/Game.cs" id="1_mgfwb"]
 [ext_resource type="Material" uid="uid://ctt17fujbbawx" path="res://Resources/light_material.tres" id="2_11fi1"]
+[ext_resource type="PackedScene" uid="uid://entuos75eb64" path="res://Menus/PauseMenu.tscn" id="3_2v80t"]
 [ext_resource type="PackedScene" uid="uid://b7ynilxw06tl5" path="res://Resources/fencing5long.tscn" id="3_st51u"]
 [ext_resource type="PackedScene" uid="uid://dm7quxyt4xk21" path="res://Resources/fence.tscn" id="4_6rk51"]
 [ext_resource type="Script" path="res://Scripts/CameraControl.cs" id="5_k6t5g"]
+[ext_resource type="PackedScene" uid="uid://bl8w8gaclmwl3" path="res://Scenes/Maps/demobackup.tscn" id="5_s7m2h"]
+[ext_resource type="PackedScene" uid="uid://c3m540qsh6dve" path="res://Menus/HUD/HUD.tscn" id="6_esfy3"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_vh0oj"]
 vertices = PackedVector3Array(-51.5, 15.5, -101.5, -51.5, 15.5, -92.5, -42.5, 15.5, -92.5, -42.5, 15.5, -101.5, 42.5, 15.5, -101.5, 42.5, 15.5, -92.5, 51.5, 15.5, -92.5, 51.5, 15.5, -101.5, -49.5, 0.5, -99.5, -49.5, 0.5, -92.5, -42.5, 0.5, -92.5, -42.5, 0.5, -99.5, 0, 0.5, 87.75, 0.25, 0.5, 88.75, 0.5, 0.5, 88.75, 0.75, 0.5, 87.75, 0, 0.5, 87.75, 0.75, 0.5, 87.75, 49.5, 0.5, 45.75, 49.5, 0.5, 34.25, -0.25, 0.5, 99.25, -10.5, 0.5, 99, -10.5, 0.5, 99.5, 0, 0.5, 99.5, -49.5, 0.5, 11.25, 0, 0.5, 87.75, 49.5, 0.5, 11.25, 49.5, 0.5, 0, -49.5, 0.5, 0, 10.25, 0.5, 99.25, -0.25, 0.5, 99.25, 0, 0.5, 99.5, 10.25, 0.5, 99.5, 49.5, 0.5, -23, 49.5, 0.5, -34.5, 41.5, 0.5, -91.5, 11.25, 0.5, 98.75, 10.25, 0.5, 99.25, 10.25, 0.5, 99.5, 20.75, 0.5, 99.5, -41.75, 0.5, -91.25, -49.5, 0.5, -34.5, -49.5, 0.5, -23, -20.75, 0.5, 99.5, -10.5, 0.5, 99.5, -10.5, 0.5, 99, -31, 0.5, -99.5, -41.25, 0.5, -99.5, -41.25, 0.5, -91.75, 31, 0.5, 99.5, 41.5, 0.5, 99.5, 41.5, 0.5, 91.75, 41.5, 0.5, -91.5, 41.5, 0.5, -99.5, 31, 0.5, -99.5, -41.5, 0.5, 91.5, -41.25, 0.5, 99.5, -31, 0.5, 99.5, -31, 0.5, -99.5, -41.25, 0.5, -91.75, -41.75, 0.5, -91.25, -20.75, 0.5, -99.5, -41.75, 0.5, -91.25, -49.5, 0.5, -91.25, -49.5, 0.5, -80, 49.5, 0.5, -80, 49.5, 0.5, -91.25, 41.5, 0.5, -91.5, -49.5, 0.5, 80, -49.5, 0.5, 91.5, -41.5, 0.5, 91.5, 41.5, 0.5, 91.75, 49.5, 0.5, 91.5, 49.5, 0.5, 80, 11, 0.5, 87.75, 11.25, 0.5, 98.75, 20.75, 0.5, 99.5, -20.75, 0.5, 99.5, -10.5, 0.5, 99, -10.25, 0.5, 87.75, 20.75, 0.5, 99.5, 31, 0.5, 99.5, 41.5, 0.5, 91.75, 49.5, 0.5, 57, 49.5, 0.5, 45.75, 11, 0.5, 87.75, 41.5, 0.5, -91.5, 31, 0.5, -99.5, 20.75, 0.5, -99.5, -41.5, 0.5, 91.5, -31, 0.5, 99.5, -20.75, 0.5, 99.5, -10.25, 0.5, 87.75, -49.5, 0.5, 45.75, -49.5, 0.5, 57, -41.75, 0.5, -91.25, -49.5, 0.5, -11.5, -49.5, 0.5, 0, 49.5, 0.5, 0, 49.5, 0.5, -11.5, 41.5, 0.5, -91.5, -41.75, 0.5, -91.25, -49.5, 0.5, -80, -49.5, 0.5, -68.5, 49.5, 0.5, -68.5, 49.5, 0.5, -80, 41.5, 0.5, -91.5, -49.5, 0.5, 68.5, -49.5, 0.5, 80, -41.5, 0.5, 91.5, 41.5, 0.5, 91.75, 49.5, 0.5, 80, 49.5, 0.5, 68.5, -41.75, 0.5, -91.25, -49.5, 0.5, -23, -49.5, 0.5, -11.5, 49.5, 0.5, -11.5, 49.5, 0.5, -23, 41.5, 0.5, -91.5, 41.5, 0.5, -91.5, 20.75, 0.5, -99.5, 10.25, 0.5, -99.5, -10.5, 0.5, -99.5, -20.75, 0.5, -99.5, -41.75, 0.5, -91.25, -41.75, 0.5, -91.25, -49.5, 0.5, -68.5, -49.5, 0.5, -57.25, 49.5, 0.5, -57.25, 49.5, 0.5, -68.5, 41.5, 0.5, -91.5, -49.5, 0.5, 57, -49.5, 0.5, 68.5, -41.5, 0.5, 91.5, 41.5, 0.5, 91.75, 49.5, 0.5, 68.5, 49.5, 0.5, 57, 41.5, 0.5, -91.5, 10.25, 0.5, -99.5, 0, 0.5, -99.5, 0, 0.5, -99.5, -10.5, 0.5, -99.5, -41.75, 0.5, -91.25, 41.5, 0.5, -91.5, -41.75, 0.5, -91.25, -49.5, 0.5, -57.25, -49.5, 0.5, -45.75, 49.5, 0.5, -45.75, 49.5, 0.5, -57.25, 41.5, 0.5, -91.5, 0, 0.5, 87.75, 49.5, 0.5, 34.25, 49.5, 0.5, 22.75, -49.5, 0.5, 22.75, -49.5, 0.5, 34.25, 0, 0.5, 87.75, 0, 0.5, 87.75, 49.5, 0.5, 22.75, 49.5, 0.5, 11.25, -41.75, 0.5, -91.25, -49.5, 0.5, -45.75, -49.5, 0.5, -34.5, -49.5, 0.5, 11.25, -49.5, 0.5, 22.75, 0, 0.5, 87.75, 49.5, 0.5, -34.5, 49.5, 0.5, -45.75, 41.5, 0.5, -91.5, 0.75, 0.5, 87.75, 11, 0.5, 87.75, 49.5, 0.5, 45.75, -49.5, 0.5, 45.75, -10.25, 0.5, 87.75, 0, 0.5, 87.75, -49.5, 0.5, 34.25, 42.75, 0.5, -99.5, 42.75, 0.5, -92.5, 49.5, 0.5, -92.5, 49.5, 0.5, -99.5, -10.5, 4.75, 88.25, -10.5, 4.75, 98.5, 0, 5, 98.5, 0, 5, 88.25, -10.5, 7, 92.6429, -10.5, 6.5, 95.5714, 0, 7, 94.1071, 0, 7, 92.6429, -7.00977, 7, 94.4837, -8.51493, 6.75, 91.4909, 0, 5, 98.5, 10.75, 5, 98.5, 10.75, 5, 88.25, 0, 5, 88.25, 0, 7, 92.6429, 0, 7, 94.1071, 10.75, 6.5, 95.5714, 10.75, 7, 92.6429, 6.51025, 7, 94.5057, 7.97512, 6.75, 91.4849, 9.49035, 6, 95.9936, 9.48028, 7, 94.4777, 4.99538, 5.25, 97.4766, 0.75, 0.5, 90, 0.5, 0.5, 88.75, 0.25, 0.5, 88.75, 0, 0.5, 90, 0.25, 0.5, 97, 0.75, 0.5, 90, 0.25, 0.5, 97, 9, 0.5, 97, 9, 0.5, 90, 0, 0.5, 90, -8.25, 0.5, 90, -8.25, 0.5, 97, 0.25, 0.5, 97, -9.5, 5, 92.25, -9.5, 5, 94.25, 0.25, 5, 94.25, 0.25, 5, 92.25, 0.25, 5, 94.25, 10.25, 5, 94.25, 10.25, 5, 92.25, 0.25, 5, 92.25, -51.5, 15.5, 92.5, -51.5, 15.5, 101.5, -42.5, 15.5, 101.5, -42.5, 15.5, 92.5, 42.5, 15.5, 92.5, 42.5, 15.5, 101.5, 51.5, 15.5, 101.5, 51.5, 15.5, 92.5, -49.5, 0.5, 92.75, -49.5, 0.5, 99.5, -42.5, 0.5, 99.5, -42.5, 0.5, 92.75, 42.75, 0.5, 92.75, 42.75, 0.5, 99.5, 49.5, 0.5, 99.5, 49.5, 0.5, 92.75)
@@ -79,180 +82,186 @@ size = Vector3(2, 1, 1)
 process_mode = 3
 script = ExtResource("1_mgfwb")
 
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+[node name="LoadedMap" type="Node" parent="."]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="LoadedMap"]
 process_mode = 3
+visible = false
 navigation_mesh = SubResource("NavigationMesh_vh0oj")
 
-[node name="Floor" type="StaticBody3D" parent="NavigationRegion3D"]
+[node name="Floor" type="StaticBody3D" parent="LoadedMap/NavigationRegion3D"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Floor"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LoadedMap/NavigationRegion3D/Floor"]
 shape = SubResource("BoxShape3D_ef15n")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Floor"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LoadedMap/NavigationRegion3D/Floor"]
 material_override = SubResource("StandardMaterial3D_shavf")
 mesh = SubResource("PlaneMesh_s15wq")
 skeleton = NodePath("../..")
 
-[node name="Corners" type="Node3D" parent="NavigationRegion3D"]
+[node name="Corners" type="Node3D" parent="LoadedMap/NavigationRegion3D"]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Corners"]
+[node name="StaticBody3D" type="StaticBody3D" parent="LoadedMap/NavigationRegion3D/Corners"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47, 0, 97)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Corners/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LoadedMap/NavigationRegion3D/Corners/StaticBody3D"]
 shape = SubResource("BoxShape3D_qtx23")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Corners/StaticBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LoadedMap/NavigationRegion3D/Corners/StaticBody3D"]
 mesh = SubResource("BoxMesh_7pcwh")
 
-[node name="StaticBody3D2" type="StaticBody3D" parent="NavigationRegion3D/Corners"]
+[node name="StaticBody3D2" type="StaticBody3D" parent="LoadedMap/NavigationRegion3D/Corners"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47, 0, 97)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Corners/StaticBody3D2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LoadedMap/NavigationRegion3D/Corners/StaticBody3D2"]
 shape = SubResource("BoxShape3D_qtx23")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Corners/StaticBody3D2"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LoadedMap/NavigationRegion3D/Corners/StaticBody3D2"]
 mesh = SubResource("BoxMesh_7pcwh")
 
-[node name="StaticBody3D3" type="StaticBody3D" parent="NavigationRegion3D/Corners"]
+[node name="StaticBody3D3" type="StaticBody3D" parent="LoadedMap/NavigationRegion3D/Corners"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47, 0, -97)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Corners/StaticBody3D3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LoadedMap/NavigationRegion3D/Corners/StaticBody3D3"]
 shape = SubResource("BoxShape3D_qtx23")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Corners/StaticBody3D3"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LoadedMap/NavigationRegion3D/Corners/StaticBody3D3"]
 mesh = SubResource("BoxMesh_1qiiv")
 
-[node name="StaticBody3D4" type="StaticBody3D" parent="NavigationRegion3D/Corners"]
+[node name="StaticBody3D4" type="StaticBody3D" parent="LoadedMap/NavigationRegion3D/Corners"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47, 0, -97)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Corners/StaticBody3D4"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LoadedMap/NavigationRegion3D/Corners/StaticBody3D4"]
 shape = SubResource("BoxShape3D_qtx23")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Corners/StaticBody3D4"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LoadedMap/NavigationRegion3D/Corners/StaticBody3D4"]
 mesh = SubResource("BoxMesh_1qiiv")
 
-[node name="Building" type="Node3D" parent="NavigationRegion3D"]
+[node name="Building" type="Node3D" parent="LoadedMap/NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 90)
 
-[node name="Back Wall" type="StaticBody3D" parent="NavigationRegion3D/Building"]
+[node name="Back Wall" type="StaticBody3D" parent="LoadedMap/NavigationRegion3D/Building"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 5)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Building/Back Wall"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LoadedMap/NavigationRegion3D/Building/Back Wall"]
 mesh = SubResource("BoxMesh_rvlhm")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Building/Back Wall"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LoadedMap/NavigationRegion3D/Building/Back Wall"]
 shape = SubResource("BoxShape3D_0711l")
 
-[node name="Left Wall" type="StaticBody3D" parent="NavigationRegion3D/Building"]
+[node name="Left Wall" type="StaticBody3D" parent="LoadedMap/NavigationRegion3D/Building"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.5, 2.5, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Building/Left Wall"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LoadedMap/NavigationRegion3D/Building/Left Wall"]
 shape = SubResource("BoxShape3D_2gqul")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Building/Left Wall"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LoadedMap/NavigationRegion3D/Building/Left Wall"]
 mesh = SubResource("BoxMesh_33oow")
 
-[node name="Right Wall" type="StaticBody3D" parent="NavigationRegion3D/Building"]
+[node name="Right Wall" type="StaticBody3D" parent="LoadedMap/NavigationRegion3D/Building"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.5, 2.5, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Building/Right Wall"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LoadedMap/NavigationRegion3D/Building/Right Wall"]
 shape = SubResource("BoxShape3D_2gqul")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Building/Right Wall"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LoadedMap/NavigationRegion3D/Building/Right Wall"]
 mesh = SubResource("BoxMesh_33oow")
 
-[node name="Flat Roof" type="StaticBody3D" parent="NavigationRegion3D/Building"]
+[node name="Flat Roof" type="StaticBody3D" parent="LoadedMap/NavigationRegion3D/Building"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.45, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Building/Flat Roof"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LoadedMap/NavigationRegion3D/Building/Flat Roof"]
 mesh = SubResource("BoxMesh_ov5qi")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Building/Flat Roof"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LoadedMap/NavigationRegion3D/Building/Flat Roof"]
 shape = SubResource("BoxShape3D_iw8ll")
 
-[node name="Triangle Roof" type="Node3D" parent="NavigationRegion3D/Building"]
+[node name="Triangle Roof" type="Node3D" parent="LoadedMap/NavigationRegion3D/Building"]
 visible = false
 
-[node name="StaticBody3D7" type="StaticBody3D" parent="NavigationRegion3D/Building/Triangle Roof"]
+[node name="StaticBody3D7" type="StaticBody3D" parent="LoadedMap/NavigationRegion3D/Building/Triangle Roof"]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 5, -5)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Building/Triangle Roof/StaticBody3D7"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LoadedMap/NavigationRegion3D/Building/Triangle Roof/StaticBody3D7"]
 mesh = SubResource("BoxMesh_wq5h6")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Building/Triangle Roof/StaticBody3D7"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LoadedMap/NavigationRegion3D/Building/Triangle Roof/StaticBody3D7"]
 shape = SubResource("BoxShape3D_aflan")
 
-[node name="StaticBody3D8" type="StaticBody3D" parent="NavigationRegion3D/Building/Triangle Roof"]
+[node name="StaticBody3D8" type="StaticBody3D" parent="LoadedMap/NavigationRegion3D/Building/Triangle Roof"]
 transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 0, 5.5, 5)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Building/Triangle Roof/StaticBody3D8"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LoadedMap/NavigationRegion3D/Building/Triangle Roof/StaticBody3D8"]
 mesh = SubResource("BoxMesh_wq5h6")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Building/Triangle Roof/StaticBody3D8"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LoadedMap/NavigationRegion3D/Building/Triangle Roof/StaticBody3D8"]
 shape = SubResource("BoxShape3D_aflan")
 
-[node name="StaticBody3D9" type="StaticBody3D" parent="NavigationRegion3D/Building/Triangle Roof"]
+[node name="StaticBody3D9" type="StaticBody3D" parent="LoadedMap/NavigationRegion3D/Building/Triangle Roof"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Building/Triangle Roof/StaticBody3D9"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LoadedMap/NavigationRegion3D/Building/Triangle Roof/StaticBody3D9"]
 mesh = SubResource("BoxMesh_tvotv")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Building/Triangle Roof/StaticBody3D9"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LoadedMap/NavigationRegion3D/Building/Triangle Roof/StaticBody3D9"]
 shape = SubResource("BoxShape3D_n4dsn")
 
-[node name="Front Wall" type="Node3D" parent="NavigationRegion3D/Building"]
+[node name="Front Wall" type="Node3D" parent="LoadedMap/NavigationRegion3D/Building"]
 
-[node name="StaticBody3D3" type="StaticBody3D" parent="NavigationRegion3D/Building/Front Wall"]
+[node name="StaticBody3D3" type="StaticBody3D" parent="LoadedMap/NavigationRegion3D/Building/Front Wall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.25, 2.5, -5)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Building/Front Wall/StaticBody3D3"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LoadedMap/NavigationRegion3D/Building/Front Wall/StaticBody3D3"]
 mesh = SubResource("BoxMesh_hxo24")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Building/Front Wall/StaticBody3D3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LoadedMap/NavigationRegion3D/Building/Front Wall/StaticBody3D3"]
 shape = SubResource("BoxShape3D_53iiq")
 
-[node name="StaticBody3D4" type="StaticBody3D" parent="NavigationRegion3D/Building/Front Wall"]
+[node name="StaticBody3D4" type="StaticBody3D" parent="LoadedMap/NavigationRegion3D/Building/Front Wall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.25, 2.5, -5)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Building/Front Wall/StaticBody3D4"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LoadedMap/NavigationRegion3D/Building/Front Wall/StaticBody3D4"]
 mesh = SubResource("BoxMesh_hxo24")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Building/Front Wall/StaticBody3D4"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LoadedMap/NavigationRegion3D/Building/Front Wall/StaticBody3D4"]
 shape = SubResource("BoxShape3D_53iiq")
 
-[node name="StaticBody3D6" type="StaticBody3D" parent="NavigationRegion3D/Building/Front Wall"]
+[node name="StaticBody3D6" type="StaticBody3D" parent="LoadedMap/NavigationRegion3D/Building/Front Wall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -5)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Building/Front Wall/StaticBody3D6"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LoadedMap/NavigationRegion3D/Building/Front Wall/StaticBody3D6"]
 shape = SubResource("BoxShape3D_bxa6i")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Building/Front Wall/StaticBody3D6"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LoadedMap/NavigationRegion3D/Building/Front Wall/StaticBody3D6"]
 mesh = SubResource("BoxMesh_pxupr")
 
-[node name="FencingLeft" parent="NavigationRegion3D" instance=ExtResource("3_st51u")]
+[node name="FencingLeft" parent="LoadedMap/NavigationRegion3D" instance=ExtResource("3_st51u")]
 
-[node name="FencingRight" type="Node3D" parent="NavigationRegion3D"]
+[node name="FencingRight" type="Node3D" parent="LoadedMap/NavigationRegion3D"]
 
-[node name="FenceR" parent="NavigationRegion3D/FencingRight" instance=ExtResource("4_6rk51")]
+[node name="FenceR" parent="LoadedMap/NavigationRegion3D/FencingRight" instance=ExtResource("4_6rk51")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, 84)
 
-[node name="FenceR2" parent="NavigationRegion3D/FencingRight" instance=ExtResource("4_6rk51")]
+[node name="FenceR2" parent="LoadedMap/NavigationRegion3D/FencingRight" instance=ExtResource("4_6rk51")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, 83)
 
-[node name="FenceR3" parent="NavigationRegion3D/FencingRight" instance=ExtResource("4_6rk51")]
+[node name="FenceR3" parent="LoadedMap/NavigationRegion3D/FencingRight" instance=ExtResource("4_6rk51")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, 82)
 
-[node name="FenceR4" parent="NavigationRegion3D/FencingRight" instance=ExtResource("4_6rk51")]
+[node name="FenceR4" parent="LoadedMap/NavigationRegion3D/FencingRight" instance=ExtResource("4_6rk51")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, 81)
 
-[node name="FenceR5" parent="NavigationRegion3D/FencingRight" instance=ExtResource("4_6rk51")]
+[node name="FenceR5" parent="LoadedMap/NavigationRegion3D/FencingRight" instance=ExtResource("4_6rk51")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, 80)
 
-[node name="FencingLeft2" parent="NavigationRegion3D" instance=ExtResource("3_st51u")]
+[node name="FencingLeft2" parent="LoadedMap/NavigationRegion3D" instance=ExtResource("3_st51u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
 
+[node name="Demo2" parent="LoadedMap" instance=ExtResource("5_s7m2h")]
+
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 35, 88)
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 16.66, 54.38)
+current = true
 fov = 100.0
 size = 30.0
 script = ExtResource("5_k6t5g")
@@ -260,4 +269,8 @@ script = ExtResource("5_k6t5g")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.965926, 0.258819, 0, -0.258819, -0.965926, 0, 23, -98)
 
-[node name="Survivors" type="Node3D" parent="."]
+[node name="UnitContainer" type="Node" parent="."]
+
+[node name="HUD" parent="." instance=ExtResource("6_esfy3")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("3_2v80t")]

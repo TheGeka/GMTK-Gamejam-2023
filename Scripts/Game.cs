@@ -11,7 +11,7 @@ using Timer = System.Timers.Timer;
 public partial class Game : Node3D
 {
 	[Export] private static float _resourceInterval = 5;
-	
+
 	internal readonly Timer TurnTimer = new Timer()
 	{
 		Interval = TimeSpan.FromSeconds(5).TotalMilliseconds,
@@ -41,10 +41,11 @@ public partial class Game : Node3D
 	internal SelectableUnits _SelectedUnit;
 	Node ChildContainer;
 	private HUD _hud;
-	
-	
-	
+
+
+
 	private PackedScene _gruntscene;
+	private PackedScene _rangerscene;
 
 	private int _resource;
 
@@ -52,6 +53,7 @@ public partial class Game : Node3D
 	public override void _Ready()
 	{
 		_gruntscene = GD.Load<PackedScene>("res://Units/Grunt/grunt.tscn");
+		_rangerscene = GD.Load<PackedScene>("res://Units/Ranger/ranger.tscn");
 		_hud = GetNode<HUD>("HUD");
 		ChildContainer = GetNode("UnitContainer");
 		TurnTimer.Elapsed += (sender, args) =>
@@ -79,7 +81,7 @@ public partial class Game : Node3D
 			_turnAvailable = false;
 			ChildContainer.GetTree().Paused = true;
 			control.Show();
-			
+
 
 		}
 		if (@event is InputEventMouseButton mouseButtonEvent)
@@ -95,9 +97,14 @@ public partial class Game : Node3D
 							Resource -= Grunt.Cost;
 							SpawnGrunt(intersection["position"].AsVector3());
 						}
-						
+
 						break;
-					case SelectableUnits.Unit2:
+					case SelectableUnits.Ranger:
+						if (Resource >= Ranger.Cost)
+						{
+							Resource -= Ranger.Cost;
+							SpawnRanger(intersection["position"].AsVector3());
+						}
 						break;
 					default:
 						throw new ArgumentOutOfRangeException();
@@ -115,5 +122,13 @@ public partial class Game : Node3D
 			newgrunt.Position = newLoc;
 			AddChild(newgrunt);
 		}
+	}
+	private void SpawnRanger(Vector3 Location)
+	{
+		var newLoc = Location;
+		var newranger = _rangerscene.Instantiate<Ranger>();
+		newranger.Name = "Ranger";
+		newranger.Position = newLoc;
+		AddChild(newranger);
 	}
 }
